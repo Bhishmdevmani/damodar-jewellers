@@ -1,0 +1,94 @@
+/* 3D Dolly Gallery Showcase Styling */
+
+.dolly-viewport {
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  height: 760px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: 1.5rem;
+  background: radial-gradient(ellipse at 50% 35%, #161512 0%, #0d0c0a 50%, #060605 100%);
+  border: 1px solid rgba(201, 164, 92, 0.22);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(201, 164, 92, 0.15);
+}
+
+/* Atmospheric 3D spatial field */
+.dolly-world {
+  transform-style: preserve-3d;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual 3D Jewellery Vitrine Card */
+.dolly-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s ease;
+}
+
+/* Ambient luxury spotlight / vignette glare */
+.dolly-ambient-glare {
+  background: radial-gradient(circle at 50% 45%, rgba(201, 164, 92, 0.08) 0%, rgba(8, 8, 7, 0.4) 65%, rgba(6, 6, 5, 0.85) 100%);
+  pointer-events: none;
+}
+
+/* Right-Edge Vertical Depth Scrubber Rail */
+.dolly-scrubber-track {
+  position: absolute;
+  right: 24px;
+  top: 25%;
+  bottom: 25%;
+  width: 4px;
+  border-radius: 9999px;
+  background: rgba(201, 164, 92, 0.15);
+  cursor: pointer;
+  z-index: 40;
+  transition: background 0.2s;
+}
+
+.dolly-scrubber-track:hover {
+  background: rgba(201, 164, 92, 0.25);
+}
+
+.dolly-scrubber-handle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 38px;
+  border-radius: 12px;
+  background: #151411;
+  border: 1px solid rgba(201, 164, 92, 0.45);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.9), 0 0 12px rgba(201, 164, 92, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  touch-action: none;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.dolly-scrubber-handle:hover {
+  border-color: #E9D5A0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 16px rgba(201, 164, 92, 0.4);
+}
+
+.dolly-scrubber-handle:active {
+  cursor: grabbing;
+  border-color: #E9D5A0;
+  transform: translate(-50%, -50%) scale(1.1);
+}
