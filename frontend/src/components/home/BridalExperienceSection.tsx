@@ -55,10 +55,11 @@ export function BridalExperienceSection() {
         <div className="lg:col-span-5 flex flex-col">
           <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-[rgba(201,164,92,0.18)] bg-[#0C0B0A]/80 shadow-[0_25px_60px_rgba(0,0,0,0.7)] flex items-center justify-center p-8 group">
             <img
-              src="/images/gallery/kundan-choker.jpg"
+              src="/images/gallery/kundan-choker.webp"
               alt="Imperial Polki and Basra Pearl Bridal Choker"
               className="max-h-[92%] max-w-[92%] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] transition-transform duration-700 ease-out group-hover:scale-105"
               loading="lazy"
+              decoding="async"
             />
           </div>
 

@@ -15,10 +15,12 @@ export function HeroEditorialCampaign() {
         {/* Full-Bleed High-Fashion Photography Canvas */}
         <div className="absolute inset-0 w-full h-full select-none">
           <img
-            src="/images/hero/hero-masterpiece.jpg"
+            src="/images/hero/hero-masterpiece.webp"
             alt="Damodar Jewellers — Royal High Jewellery Campaign featuring 22K Gold Royal Sapphire Necklace"
             className="w-full h-full object-cover object-[72%_center] lg:object-center filter contrast-[1.03] brightness-[0.98]"
             loading="eager"
+            fetchPriority="high"
+            decoding="sync"
           />
 
           {/* Directional Shadow: Keeps typography ultra-readable across phones, tablets, and large screens */}
@@ -182,10 +184,11 @@ export function HeroEditorialCampaign() {
           <div className="lg:col-span-6 flex flex-col">
             <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-[rgba(201,164,92,0.22)] bg-[#0C0B0A] shadow-[0_25px_60px_rgba(0,0,0,0.7)] group">
               <img
-                src="/images/hero/necklace-macro-drape.jpg"
+                src="/images/hero/necklace-macro-drape.webp"
                 alt="Damodar Jewellers — Macro Craftsmanship Detail of 22K Gold Royal Sapphire Necklace"
                 className="w-full h-full object-cover object-center filter contrast-[1.02] brightness-[0.98] transition-transform duration-700 ease-out group-hover:scale-104"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080807]/60 via-transparent to-transparent pointer-events-none" />
             </div>

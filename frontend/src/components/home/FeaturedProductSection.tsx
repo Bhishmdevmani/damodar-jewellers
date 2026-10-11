@@ -67,9 +67,11 @@ export function FeaturedProductSection() {
                   className="relative w-full h-full flex items-center justify-center p-6 sm:p-8"
                 >
                   <img
-                    src="/images/gallery/diamond-ring.jpg"
+                    src="/images/gallery/diamond-ring.webp"
                     alt="The Eternal Solitaire Diamond Ring — 2.10ct Brilliant Diamond in 22K Gold"
                     className="max-h-[85%] max-w-[85%] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] sm:text-xs text-[#A8A197]/70 font-light gap-1 sm:gap-0">
                     <span>2.10ct Center Solitaire · GIA Certified</span>

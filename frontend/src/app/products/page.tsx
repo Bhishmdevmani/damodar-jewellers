@@ -27,7 +27,7 @@ import type { Product } from '@/types';
 const SPOTLIGHT_MEDIA: GalleryMediaItem[] = [
   {
     id: 'spot-1',
-    url: '/images/gallery/necklace-royal.jpg',
+    url: '/images/gallery/necklace-royal.webp',
     alt: 'Celestial Royal Sapphire Necklace',
     title: 'The Celestial Royal Sapphire Necklace',
     badge: 'Signature Haute Creation',
@@ -35,7 +35,7 @@ const SPOTLIGHT_MEDIA: GalleryMediaItem[] = [
   },
   {
     id: 'spot-2',
-    url: '/images/gallery/diamond-ring.jpg',
+    url: '/images/gallery/diamond-ring.webp',
     alt: 'Eternal Diamond Solitaire Ring',
     title: 'The Eternal Diamond Solitaire Ring',
     badge: 'GIA Certified Solitaire',
@@ -43,7 +43,7 @@ const SPOTLIGHT_MEDIA: GalleryMediaItem[] = [
   },
   {
     id: 'spot-3',
-    url: '/images/gallery/gold-bangles.jpg',
+    url: '/images/gallery/gold-bangles.webp',
     alt: 'Heritage Gold Filigree Bangles',
     title: 'Heritage Gold Filigree Bangles',
     badge: 'Ancestral Temple Craft',
@@ -51,7 +51,7 @@ const SPOTLIGHT_MEDIA: GalleryMediaItem[] = [
   },
   {
     id: 'spot-4',
-    url: '/images/gallery/kundan-choker.jpg',
+    url: '/images/gallery/kundan-choker.webp',
     alt: 'Maharani Kundan & Pearl Bridal Choker',
     title: 'The Maharani Kundan & Pearl Choker',
     badge: 'Royal Bridal Suite',
@@ -303,7 +303,7 @@ export default function ProductsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProducts.map((product, idx) => {
             const isWishlisted = !!wishlist[product.id];
-            const primaryImage = product.images?.[0]?.url || '/images/gallery/necklace-royal.jpg';
+            const primaryImage = product.images?.[0]?.url || '/images/gallery/necklace-royal.webp';
 
             return (
               <motion.article
@@ -323,6 +323,7 @@ export default function ProductsPage() {
                     alt={product.name}
                     className="max-h-full max-w-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] transition-transform duration-500 ease-out group-hover:scale-108"
                     loading="lazy"
+                    decoding="async"
                   />
 
                   {/* Top Badges */}

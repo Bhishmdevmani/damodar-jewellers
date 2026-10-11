@@ -16,7 +16,7 @@ export const demoCollections: Collection[] = [
     description: 'Exquisite pieces for life\'s most cherished celebrations. Each design is crafted to complement the beauty of the occasion.',
     image: {
       id: 'col-img-1',
-      url: '/images/collections/bridal.jpg',
+      url: '/images/collections/bridal.webp',
       alt: 'Bridal jewellery collection — gold necklace sets and bridal designs',
     },
     productCount: 12,
@@ -28,7 +28,7 @@ export const demoCollections: Collection[] = [
     description: 'Timeless gold designs for everyday elegance. Classic pieces that transcend trends.',
     image: {
       id: 'col-img-2',
-      url: '/images/collections/gold.jpg',
+      url: '/images/collections/gold.webp',
       alt: 'Gold essentials collection — refined gold jewellery',
     },
     productCount: 18,
@@ -40,7 +40,7 @@ export const demoCollections: Collection[] = [
     description: 'Brilliant diamonds set in exceptional craftsmanship. Each piece tells a story of precision and beauty.',
     image: {
       id: 'col-img-3',
-      url: '/images/collections/diamond.jpg',
+      url: '/images/collections/diamond.webp',
       alt: 'Diamond elegance collection — diamond jewellery designs',
     },
     productCount: 10,
@@ -52,7 +52,7 @@ export const demoCollections: Collection[] = [
     description: 'Refined pieces for your daily signature style. Understated luxury for every moment.',
     image: {
       id: 'col-img-4',
-      url: '/images/collections/everyday.jpg',
+      url: '/images/collections/everyday.webp',
       alt: 'Everyday classics collection — daily wear jewellery',
     },
     productCount: 24,
@@ -68,8 +68,8 @@ export const demoProducts: Product[] = [
     price: 85000,
     currency: 'INR',
     images: [
-      { id: 'img-1a', url: '/images/products/necklace-1.jpg', alt: 'Celestial Gold Necklace — front view', isPrimary: true },
-      { id: 'img-1b', url: '/images/products/necklace-1-detail.jpg', alt: 'Celestial Gold Necklace — detail view' },
+      { id: 'img-1a', url: '/images/products/necklace-1.webp', alt: 'Celestial Gold Necklace — front view', isPrimary: true },
+      { id: 'img-1b', url: '/images/products/necklace-1-detail.webp', alt: 'Celestial Gold Necklace — detail view' },
     ],
     collection: 'Bridal Jewellery',
     collectionSlug: 'bridal-jewellery',
@@ -85,8 +85,8 @@ export const demoProducts: Product[] = [
     price: 125000,
     currency: 'INR',
     images: [
-      { id: 'img-2a', url: '/images/products/ring-1.jpg', alt: 'Eternal Diamond Ring — front view', isPrimary: true },
-      { id: 'img-2b', url: '/images/products/ring-1-side.jpg', alt: 'Eternal Diamond Ring — side view' },
+      { id: 'img-2a', url: '/images/products/ring-1.webp', alt: 'Eternal Diamond Ring — front view', isPrimary: true },
+      { id: 'img-2b', url: '/images/products/ring-1-side.webp', alt: 'Eternal Diamond Ring — side view' },
     ],
     collection: 'Diamond Elegance',
     collectionSlug: 'diamond-elegance',
@@ -102,7 +102,7 @@ export const demoProducts: Product[] = [
     price: 65000,
     currency: 'INR',
     images: [
-      { id: 'img-3a', url: '/images/products/bangles-1.jpg', alt: 'Heritage Gold Bangles — pair view', isPrimary: true },
+      { id: 'img-3a', url: '/images/products/bangles-1.webp', alt: 'Heritage Gold Bangles — pair view', isPrimary: true },
     ],
     collection: 'Gold Essentials',
     collectionSlug: 'gold-essentials',
@@ -118,7 +118,7 @@ export const demoProducts: Product[] = [
     price: 42000,
     currency: 'INR',
     images: [
-      { id: 'img-4a', url: '/images/products/earrings-1.jpg', alt: 'Aurora Diamond Earrings — pair view', isPrimary: true },
+      { id: 'img-4a', url: '/images/products/earrings-1.webp', alt: 'Aurora Diamond Earrings — pair view', isPrimary: true },
     ],
     collection: 'Diamond Elegance',
     collectionSlug: 'diamond-elegance',
@@ -134,7 +134,7 @@ export const demoProducts: Product[] = [
     price: 28000,
     currency: 'INR',
     images: [
-      { id: 'img-5a', url: '/images/products/chain-1.jpg', alt: 'Minimalist Gold Chain', isPrimary: true },
+      { id: 'img-5a', url: '/images/products/chain-1.webp', alt: 'Minimalist Gold Chain', isPrimary: true },
     ],
     collection: 'Everyday Classics',
     collectionSlug: 'everyday-classics',
@@ -150,7 +150,7 @@ export const demoProducts: Product[] = [
     price: 195000,
     currency: 'INR',
     images: [
-      { id: 'img-6a', url: '/images/products/bridal-set-1.jpg', alt: 'Bridal Kundan Set — full set view', isPrimary: true },
+      { id: 'img-6a', url: '/images/products/bridal-set-1.webp', alt: 'Bridal Kundan Set — full set view', isPrimary: true },
     ],
     collection: 'Bridal Jewellery',
     collectionSlug: 'bridal-jewellery',
@@ -166,7 +166,7 @@ export const demoProducts: Product[] = [
     price: 55000,
     currency: 'INR',
     images: [
-      { id: 'img-7a', url: '/images/products/pendant-1.jpg', alt: 'Sapphire Pendant — front view', isPrimary: true },
+      { id: 'img-7a', url: '/images/products/pendant-1.webp', alt: 'Sapphire Pendant — front view', isPrimary: true },
     ],
     collection: 'Diamond Elegance',
     collectionSlug: 'diamond-elegance',
@@ -182,7 +182,7 @@ export const demoProducts: Product[] = [
     price: 15000,
     currency: 'INR',
     images: [
-      { id: 'img-8a', url: '/images/products/studs-1.jpg', alt: 'Classic Gold Studs — pair view', isPrimary: true },
+      { id: 'img-8a', url: '/images/products/studs-1.webp', alt: 'Classic Gold Studs — pair view', isPrimary: true },
     ],
     collection: 'Everyday Classics',
     collectionSlug: 'everyday-classics',

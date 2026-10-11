@@ -7,27 +7,27 @@ import { demoCollections } from '@/lib/demo-data';
 
 const GALLERY_ITEMS: GalleryItem[] = [
   {
-    image: '/images/gallery/kundan-choker.jpg',
+    image: '/images/gallery/kundan-choker.webp',
     text: 'Bridal Jewellery',
   },
   {
-    image: '/images/gallery/gold-bangles.jpg',
+    image: '/images/gallery/gold-bangles.webp',
     text: 'Gold Essentials',
   },
   {
-    image: '/images/gallery/diamond-ring.jpg',
+    image: '/images/gallery/diamond-ring.webp',
     text: 'Diamond Elegance',
   },
   {
-    image: '/images/gallery/necklace-royal.jpg',
+    image: '/images/gallery/necklace-royal.webp',
     text: 'Everyday Classics',
   },
   {
-    image: '/images/gallery/sapphire-earrings.jpg',
+    image: '/images/gallery/sapphire-earrings.webp',
     text: 'Royal Sapphire',
   },
   {
-    image: '/images/hero/necklace-macro-drape.jpg',
+    image: '/images/hero/necklace-macro-drape.webp',
     text: 'Haute Joaillerie',
   },
 ];

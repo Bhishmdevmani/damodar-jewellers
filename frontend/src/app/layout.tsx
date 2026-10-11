@@ -74,6 +74,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${cormorant.variable} ${manrope.variable} antialiased`}
     >
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero/hero-masterpiece.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-screen flex flex-col bg-[#080807] text-[#F5F0E7]"

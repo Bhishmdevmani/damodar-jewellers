@@ -70,6 +70,7 @@ export function ProductCard({ product }: ProductCardProps) {
               alt={product.images[0].alt || product.name}
               className="max-h-full max-w-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
               loading="lazy"
+              decoding="async"
               onError={(e) => {
                 // If local image not yet rendered, gracefully replace with artistic placeholder
                 e.currentTarget.style.display = 'none';
