@@ -42,9 +42,19 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
 
   const [activeFocalIndex, setActiveFocalIndex] = useState(0);
   const [isDraggingScrubber, setIsDraggingScrubber] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const isTransitioning = useRef(false);
   const touchStartY = useRef<number | null>(null);
   const touchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Reset index when category filter changes
   useEffect(() => {
@@ -225,23 +235,18 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
       onTouchEnd={handleTouchEnd}
       aria-label="3D Dolly Gallery. Scroll wheel over gallery or click next to dolly through masterpieces."
       className={`dolly-viewport relative w-full rounded-3xl overflow-hidden outline-none select-none ${className}`}
-      style={{
-        minHeight: '720px',
-        height: '760px',
-        width: '100%',
-      }}
     >
       {/* Ambient Vignette & Spotlight Atmosphere */}
       <div className="absolute inset-0 dolly-ambient-glare z-10 pointer-events-none" />
 
       {/* TOP CAMERA CONTROLS BAR */}
-      <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-6 sm:px-10 pt-6">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#181714] border border-[rgba(201,164,92,0.3)] flex items-center justify-center shadow-md">
-            <Camera className="w-4 h-4 text-[#C9A45C] animate-pulse" />
+      <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 sm:px-10 pt-4 sm:pt-6">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#181714] border border-[rgba(201,164,92,0.3)] flex items-center justify-center shadow-md">
+            <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C9A45C] animate-pulse" />
           </div>
           <div>
-            <span className="text-xs uppercase tracking-[0.24em] text-[#E9D5A0] font-light block">
+            <span className="text-[11px] sm:text-xs uppercase tracking-[0.24em] text-[#E9D5A0] font-light block">
               Atelier Dolly Camera
             </span>
             <span className="hidden sm:inline text-[11px] text-[#A8A197]/60 tracking-wider">
@@ -251,17 +256,17 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
         </div>
 
         {/* Top-Right Navigation Controls */}
-        <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#141310]/85 backdrop-blur-md shadow-xl border border-[rgba(201,164,92,0.25)]">
+        <div className="flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 sm:px-3.5 rounded-full bg-[#141310]/85 backdrop-blur-md shadow-xl border border-[rgba(201,164,92,0.25)]">
           <button
             onClick={goToPrev}
             disabled={activeFocalIndex <= 0}
             aria-label="Previous piece"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#E9D5A0] hover:text-white hover:bg-[rgba(201,164,92,0.15)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
+            className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[#E9D5A0] hover:text-white hover:bg-[rgba(201,164,92,0.15)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
 
-          <span className="px-2 text-xs font-mono tracking-widest text-[#E9D5A0] select-none">
+          <span className="px-1.5 sm:px-2 text-xs font-mono tracking-widest text-[#E9D5A0] select-none">
             {String(activeFocalIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
           </span>
 
@@ -269,14 +274,14 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
             onClick={goToNext}
             disabled={activeFocalIndex >= total - 1}
             aria-label="Next piece"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#E9D5A0] hover:text-white hover:bg-[rgba(201,164,92,0.15)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
+            className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[#E9D5A0] hover:text-white hover:bg-[rgba(201,164,92,0.15)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </div>
       </div>
 
-      {/* 3D SPATIAL DOLLY WORLD: Perfectly Centered Depth Staggering */}
+      {/* 3D SPATIAL DOLLY WORLD: Centered Depth Staggering */}
       <div className="dolly-world z-20">
         {items.map((item, index) => {
           const deltaIndex = index - activeFocalIndex;
@@ -300,9 +305,11 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
           } else if (deltaIndex > 0) {
             // UPCOMING IN BACKGROUND DEPTH (Negative Z)
             const side = deltaIndex % 2 === 1 ? 1 : -1;
-            x = side * (130 + (deltaIndex - 1) * 35);
-            y = deltaIndex * 10;
-            z = -deltaIndex * 300;
+            const sideOffset = isMobile ? 55 : 130;
+            const sideStep = isMobile ? 18 : 35;
+            x = side * (sideOffset + (deltaIndex - 1) * sideStep);
+            y = deltaIndex * (isMobile ? 6 : 10);
+            z = -deltaIndex * (isMobile ? 220 : 300);
             scale = Math.max(0.68, 1 - deltaIndex * 0.1);
             opacity = Math.max(0.18, 1 - deltaIndex * 0.32);
             filter = `blur(${deltaIndex * 1.5}px) brightness(${Math.max(0.55, 1 - deltaIndex * 0.18)})`;
@@ -310,9 +317,11 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
             // DOLLIED PAST CAMERA (Positive Z, moving to foreground sides)
             const past = Math.abs(deltaIndex);
             const side = deltaIndex % 2 === 0 ? -1 : 1;
-            x = side * (240 + (past - 1) * 60);
-            y = -past * 15;
-            z = Math.min(280, past * 220);
+            const pastOffset = isMobile ? 110 : 240;
+            const pastStep = isMobile ? 25 : 60;
+            x = side * (pastOffset + (past - 1) * pastStep);
+            y = -past * (isMobile ? 8 : 15);
+            z = Math.min(280, past * (isMobile ? 160 : 220));
             scale = 1.05;
             opacity = Math.max(0, 1 - past * 1.25);
             filter = `blur(${past * 3}px)`;
@@ -330,8 +339,8 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
               }`}
               style={{
                 zIndex,
-                width: 'min(86vw, 450px)',
-                height: 'min(62vh, 490px)',
+                width: isMobile ? 'min(86vw, 340px)' : 'min(86vw, 450px)',
+                height: isMobile ? 'min(48vh, 370px)' : 'min(62vh, 490px)',
                 transform: `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), ${z}px) scale(${scale})`,
                 opacity,
                 filter,
@@ -340,7 +349,7 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
             >
               {/* Vitrine Display Card */}
               <div
-                className={`relative w-full h-full rounded-3xl overflow-hidden bg-[#100F0D]/90 backdrop-blur-2xl flex flex-col items-center justify-between p-6 sm:p-7 transition-all duration-300 ${
+                className={`relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-[#100F0D]/90 backdrop-blur-2xl flex flex-col items-center justify-between p-4 sm:p-7 transition-all duration-300 ${
                   isFocal
                     ? 'border border-[rgba(201,164,92,0.35)] shadow-[0_30px_90px_rgba(0,0,0,0.98),0_0_35px_rgba(201,164,92,0.08)]'
                     : 'border border-[rgba(201,164,92,0.12)] shadow-[0_20px_60px_rgba(0,0,0,0.85)]'
@@ -348,18 +357,18 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
               >
                 {/* Top Card Badge */}
                 <div className="w-full flex items-center justify-between">
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-[#C9A45C] font-mono">
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#C9A45C] font-mono">
                     {item.subtitle || 'Atelier Masterpiece'}
                   </span>
                   {item.hallmark && (
-                    <span className="text-[9px] uppercase tracking-wider text-[#A8A197]/80 px-2 py-0.5 rounded-full bg-[rgba(201,164,92,0.08)] border border-[rgba(201,164,92,0.18)]">
+                    <span className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#A8A197]/80 px-2 py-0.5 rounded-full bg-[rgba(201,164,92,0.08)] border border-[rgba(201,164,92,0.18)]">
                       {item.hallmark}
                     </span>
                   )}
                 </div>
 
                 {/* High-Resolution Jewellery Showcase Image */}
-                <div className="relative w-full h-[68%] flex items-center justify-center p-2 group">
+                <div className="relative w-full h-[66%] sm:h-[68%] flex items-center justify-center p-2 group">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -369,20 +378,20 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
                 </div>
 
                 {/* Card Bottom Meta */}
-                <div className="w-full pt-3 border-t border-[rgba(201,164,92,0.12)] flex items-center justify-between">
-                  <div className="flex flex-col">
+                <div className="w-full pt-2 sm:pt-3 border-t border-[rgba(201,164,92,0.12)] flex items-center justify-between">
+                  <div className="flex flex-col min-w-0 pr-2">
                     <h4
-                      className="text-base font-light text-[#F5F0E7] truncate max-w-[240px] sm:max-w-[280px]"
+                      className="text-sm sm:text-base font-light text-[#F5F0E7] truncate max-w-[200px] sm:max-w-[280px]"
                       style={{ fontFamily: 'var(--font-serif)' }}
                     >
                       {item.title}
                     </h4>
-                    <span className="text-[11px] text-[#A8A197]/75 font-light truncate max-w-[240px]">
+                    <span className="text-[10px] sm:text-[11px] text-[#A8A197]/75 font-light truncate max-w-[200px]">
                       {item.metalPurity}
                     </span>
                   </div>
 
-                  <span className="text-xs font-mono font-medium text-[#C9A45C]">
+                  <span className="text-xs font-mono font-medium text-[#C9A45C] shrink-0">
                     0{index + 1}
                   </span>
                 </div>
@@ -408,14 +417,14 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
       </div>
 
       {/* FLOATING PROVENANCE & SPECIFICATIONS HUD (Bottom-Left) */}
-      <div className="absolute left-6 sm:left-10 bottom-6 sm:bottom-8 z-30 max-w-md pointer-events-none">
-        <div className="p-5 rounded-2xl bg-[#0F0E0C]/90 backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.92)] pointer-events-auto border border-[rgba(201,164,92,0.2)] transition-all duration-300">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-[10px] uppercase tracking-[0.24em] text-[#C9A45C] font-mono">
+      <div className="absolute left-3 right-3 sm:left-10 sm:right-auto bottom-3 sm:bottom-8 z-30 max-w-md pointer-events-none">
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-[#0F0E0C]/95 backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.92)] pointer-events-auto border border-[rgba(201,164,92,0.2)] transition-all duration-300">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] text-[#C9A45C] font-mono">
               {currentItem.subtitle}
             </span>
             {currentItem.hallmark && (
-              <span className="inline-flex items-center gap-1 text-[9px] uppercase tracking-wider text-[#A8A197] px-2 py-0.5 rounded-full bg-[rgba(201,164,92,0.08)] border border-[rgba(201,164,92,0.15)]">
+              <span className="inline-flex items-center gap-1 text-[8px] sm:text-[9px] uppercase tracking-wider text-[#A8A197] px-1.5 sm:px-2 py-0.5 rounded-full bg-[rgba(201,164,92,0.08)] border border-[rgba(201,164,92,0.15)]">
                 <CheckCircle2 className="w-2.5 h-2.5 text-[#C9A45C]" />
                 {currentItem.hallmark}
               </span>
@@ -423,29 +432,29 @@ export function DollyGallery({ items, onInspect, className = '' }: DollyGalleryP
           </div>
 
           <h3
-            className="text-lg sm:text-xl font-light text-[#F5F0E7] leading-tight mb-2"
+            className="text-base sm:text-xl font-light text-[#F5F0E7] leading-tight mb-1 sm:mb-2 truncate"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             {currentItem.title}
           </h3>
 
-          <p className="text-xs text-[#A8A197] font-light leading-relaxed mb-4 line-clamp-2">
+          <p className="text-[11px] sm:text-xs text-[#A8A197] font-light leading-relaxed mb-3 sm:mb-4 line-clamp-1 sm:line-clamp-2">
             {currentItem.gemstones} · {currentItem.metalPurity}
           </p>
 
           <div className="flex items-center gap-3 pt-2 border-t border-[rgba(201,164,92,0.12)]">
             <Link
               href={`/products/${currentItem.slug}`}
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-[#E9D5A0] hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-[0.16em] text-[#E9D5A0] hover:text-white transition-colors"
             >
-              <span>View Piece & Inquire</span>
+              <span>View Piece</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#C9A45C]" />
             </Link>
 
             {onInspect && (
               <button
                 onClick={() => onInspect(currentItem)}
-                className="inline-flex items-center gap-1.5 text-xs text-[#A8A197] hover:text-[#E9D5A0] transition-colors ml-auto px-3 py-1 rounded-md bg-black/50 border border-[rgba(201,164,92,0.2)] hover:border-[#C9A45C]/50"
+                className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs text-[#A8A197] hover:text-[#E9D5A0] transition-colors ml-auto px-2.5 sm:px-3 py-1 rounded-md bg-black/50 border border-[rgba(201,164,92,0.2)] hover:border-[#C9A45C]/50"
               >
                 <Maximize2 className="w-3 h-3 text-[#C9A45C]" />
                 <span>Provenance</span>

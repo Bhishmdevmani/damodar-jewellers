@@ -12,8 +12,8 @@ export function FeaturedProductSection() {
   const featuredProduct = demoProducts[1] || demoProducts[0];
 
   return (
-    <section className="relative py-28 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto z-20">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section className="relative py-16 sm:py-28 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto z-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
         {/* Left Side: Refined Photographic Stage with Optional 3D View (7 cols) */}
         <motion.div
           initial={{ opacity: 0, x: -25 }}
@@ -23,12 +23,12 @@ export function FeaturedProductSection() {
           className="lg:col-span-7 flex flex-col"
         >
           {/* View Switcher: Text Links */}
-          <div className="flex items-center justify-between pb-4 mb-4 border-b border-[rgba(201,164,92,0.12)]">
+          <div className="flex items-center justify-between pb-3 sm:pb-4 mb-4 border-b border-[rgba(201,164,92,0.12)]">
             <span className="text-xs tracking-wider text-[#C9A45C] font-light">
               Solitaire Spotlight
             </span>
 
-            <div className="flex items-center gap-6 text-xs tracking-wider">
+            <div className="flex items-center gap-4 sm:gap-6 text-xs tracking-wider">
               <button
                 onClick={() => setViewMode('photo')}
                 className={`transition-colors flex items-center gap-1.5 ${
@@ -64,14 +64,14 @@ export function FeaturedProductSection() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="relative w-full h-full flex items-center justify-center p-8"
+                  className="relative w-full h-full flex items-center justify-center p-6 sm:p-8"
                 >
                   <img
                     src="/images/gallery/diamond-ring.jpg"
                     alt="The Eternal Solitaire Diamond Ring — 2.10ct Brilliant Diamond in 22K Gold"
                     className="max-h-[85%] max-w-[85%] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
                   />
-                  <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-xs text-[#A8A197]/70 font-light">
+                  <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] sm:text-xs text-[#A8A197]/70 font-light gap-1 sm:gap-0">
                     <span>2.10ct Center Solitaire · GIA Certified</span>
                     <span>Triple-Ex Cut Symmetry</span>
                   </div>
@@ -115,12 +115,12 @@ export function FeaturedProductSection() {
             {featuredProduct.name}
           </h2>
 
-          <p className="text-sm text-[#A8A197] leading-relaxed mb-8 font-light">
+          <p className="text-sm text-[#A8A197] leading-relaxed mb-6 sm:mb-8 font-light">
             {featuredProduct.description} Elevated in a six-prong cathedral crown to maximize internal fire, paired with hand-set micro-pavé shoulders along a tapered knife-edge band in solid 22K gold.
           </p>
 
           {/* Understated Editorial Specs List */}
-          <div className="space-y-3 py-6 border-t border-b border-[rgba(201,164,92,0.12)] mb-8 text-xs font-light text-[#D1CCC4]">
+          <div className="space-y-3 py-5 sm:py-6 border-t border-b border-[rgba(201,164,92,0.12)] mb-6 sm:mb-8 text-xs font-light text-[#D1CCC4]">
             <div className="flex justify-between">
               <span className="text-[#A8A197]">Metal:</span>
               <span className="text-[#F5F0E7]">Solid 22K Yellow Gold (BIS 916)</span>
@@ -140,17 +140,17 @@ export function FeaturedProductSection() {
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
             <Link
               href={`/products/${featuredProduct.slug}`}
-              className="btn-primary py-3.5 px-8 text-xs tracking-wider rounded-full flex items-center gap-2"
+              className="btn-primary py-3.5 px-8 text-xs tracking-wider rounded-full flex items-center justify-center gap-2 text-center"
             >
               <span>View Product & Details</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
               href="/products"
-              className="text-xs tracking-wider text-[#E9D5A0] hover:text-[#F5F0E7] transition-colors border-b border-[#C9A45C]/40 pb-0.5"
+              className="text-xs tracking-wider text-[#E9D5A0] hover:text-[#F5F0E7] transition-colors border-b border-[#C9A45C]/40 pb-0.5 text-center self-center sm:self-auto"
             >
               Explore All Products
             </Link>

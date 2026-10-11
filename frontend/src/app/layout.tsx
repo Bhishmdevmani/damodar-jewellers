@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import './globals.css';
@@ -8,6 +8,13 @@ import { Footer } from '@/components/layout/Footer';
 import { CartDrawer } from '@/components/cart/CartDrawer';
 import { ToastContainer } from '@/components/ui/ToastContainer';
 import { DemoBanner } from '@/components/ui/DemoBanner';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#080807',
+};
 
 const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',

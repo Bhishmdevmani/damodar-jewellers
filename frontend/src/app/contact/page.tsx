@@ -20,27 +20,27 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
-      <div className="max-w-2xl mb-16">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+      <div className="max-w-2xl mb-12 sm:mb-16">
         <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3">
           Concierge & Atelier
         </span>
         <h1
-          className="text-display-md font-light text-[#F5F0E7] mb-4 leading-tight"
+          className="text-2xl sm:text-display-md font-light text-[#F5F0E7] mb-4 leading-tight"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           Consult With Our Artisans
         </h1>
-        <p className="text-base text-[#A8A197] font-light leading-relaxed">
+        <p className="text-sm sm:text-base text-[#A8A197] font-light leading-relaxed">
           Schedule a private appointment with our gemologists, discuss bespoke bridal suites, or inquire regarding existing orders.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
         {/* Contact Form (7 cols) */}
         <div className="lg:col-span-7">
           {submitted ? (
-            <div className="p-10 bg-[#11100E] border border-[rgba(201,164,92,0.3)] text-center">
+            <div className="p-6 sm:p-10 bg-[#11100E] border border-[rgba(201,164,92,0.3)] text-center">
               <div className="w-16 h-16 rounded-full bg-emerald-950/40 border border-emerald-500/40 flex items-center justify-center mx-auto mb-6 text-emerald-400">
                 <CheckCircle className="w-8 h-8" />
               </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="p-8 bg-[#11100E] border border-[rgba(201,164,92,0.18)] space-y-6">
+            <form onSubmit={handleSubmit} className="p-5 sm:p-8 bg-[#11100E] border border-[rgba(201,164,92,0.18)] space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-[#A8A197] mb-2">
@@ -142,7 +142,7 @@ export default function ContactPage() {
 
         {/* Boutique Information (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-8 bg-[#11100E] border border-[rgba(201,164,92,0.18)]">
+          <div className="p-5 sm:p-8 bg-[#11100E] border border-[rgba(201,164,92,0.18)]">
             <h3
               className="text-xl font-light text-[#F5F0E7] mb-6 pb-4 border-b border-[rgba(201,164,92,0.1)]"
               style={{ fontFamily: 'var(--font-serif)' }}

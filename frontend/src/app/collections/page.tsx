@@ -22,36 +22,36 @@ export default function CollectionsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
       {/* Editorial Header */}
-      <div className="max-w-2xl mb-16">
+      <div className="max-w-2xl mb-12 sm:mb-16">
         <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3">
           The Permanent Archive
         </span>
         <h1
-          className="text-display-lg font-light text-[#F5F0E7] mb-6 leading-tight"
+          className="text-3xl sm:text-display-md lg:text-display-lg font-light text-[#F5F0E7] mb-4 sm:mb-6 leading-tight"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           High Jewellery <br />
           <span className="text-gold-gradient italic">Collections</span>
         </h1>
-        <p className="text-base text-[#A8A197] font-light leading-relaxed">
+        <p className="text-sm sm:text-base text-[#A8A197] font-light leading-relaxed">
           From sovereign bridal suites to minimalist everyday gold chains, each collection embodies our commitment to sculptural proportions and uncompromising purity.
         </p>
       </div>
 
       {/* Collection Highlights Horizontal Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16 sm:mb-20">
         {demoCollections.map((col, idx) => (
           <Link
             key={col.id}
             href={`/collections/${col.slug}`}
-            className="group p-6 bg-[#11100E] border border-[rgba(201,164,92,0.18)] hover:border-[#C9A45C] transition-all flex flex-col justify-between min-h-[220px]"
+            className="group p-5 sm:p-6 bg-[#11100E] border border-[rgba(201,164,92,0.18)] hover:border-[#C9A45C] transition-all flex flex-col justify-between min-h-[200px] sm:min-h-[220px]"
           >
             <div>
               <span className="text-xs font-mono text-[#C9A45C]/60 block mb-2">0{idx + 1}</span>
               <h2
-                className="text-xl font-light text-[#F5F0E7] group-hover:text-[#C9A45C] transition-colors mb-2"
+                className="text-lg sm:text-xl font-light text-[#F5F0E7] group-hover:text-[#C9A45C] transition-colors mb-2"
                 style={{ fontFamily: 'var(--font-serif)' }}
               >
                 {col.name}

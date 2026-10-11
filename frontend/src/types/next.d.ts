@@ -8,6 +8,18 @@ declare module 'next' {
     robots?: any;
     [key: string]: any;
   };
+  export type Viewport = {
+    width?: string | number;
+    initialScale?: number;
+    maximumScale?: number;
+    minimumScale?: number;
+    userScalable?: boolean;
+    viewportFit?: 'auto' | 'cover' | 'contain';
+    interactiveWidget?: 'resizes-visual' | 'resizes-content' | 'overlays-content';
+    themeColor?: string | { media?: string; color: string }[];
+    colorScheme?: 'normal' | 'light' | 'dark' | 'light dark' | 'dark light';
+    [key: string]: any;
+  };
   export type NextConfig = Record<string, any>;
   export type ResolvingMetadata = Promise<Metadata>;
   export type ResolvingViewport = any;

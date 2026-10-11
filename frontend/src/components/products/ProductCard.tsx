@@ -133,18 +133,18 @@ export function ProductCard({ product }: ProductCardProps) {
       </Link>
 
       {/* Info Container */}
-      <div className="p-5 flex flex-col flex-1 justify-between bg-[#11100E]">
+      <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-[#11100E]">
         <div>
-          <div className="flex items-center justify-between text-[11px] text-[#A8A197]/70 uppercase tracking-widest mb-1">
-            <span>{product.material || 'Pure Gold'}</span>
-            <span className={product.availability === 'in_stock' ? 'text-emerald-400/80' : 'text-[#C9A45C]/80'}>
+          <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-[#A8A197]/70 uppercase tracking-widest mb-1">
+            <span className="truncate pr-2">{product.material || 'Pure Gold'}</span>
+            <span className={`shrink-0 ${product.availability === 'in_stock' ? 'text-emerald-400/80' : 'text-[#C9A45C]/80'}`}>
               {availabilityText}
             </span>
           </div>
 
           <Link href={`/products/${product.slug}`} className="block group/title">
             <h3
-              className="text-base text-[#F5F0E7] group-hover/title:text-[#C9A45C] transition-colors line-clamp-1 font-light tracking-wide mb-2"
+              className="text-sm sm:text-base text-[#F5F0E7] group-hover/title:text-[#C9A45C] transition-colors line-clamp-1 font-light tracking-wide mb-2"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
               {product.name}
@@ -152,14 +152,27 @@ export function ProductCard({ product }: ProductCardProps) {
           </Link>
         </div>
 
-        <div className="pt-2 border-t border-[rgba(201,164,92,0.1)] flex items-center justify-between">
+        <div className="pt-2.5 border-t border-[rgba(201,164,92,0.1)] flex items-center justify-between gap-2">
           <PriceDisplay price={product.price} compareAtPrice={product.compareAtPrice} currency={product.currency} />
-          <Link
-            href={`/products/${product.slug}`}
-            className="text-xs uppercase tracking-wider text-[#A8A197] hover:text-[#C9A45C] flex items-center gap-1 transition-colors"
-          >
-            Details →
-          </Link>
+          
+          <div className="flex items-center gap-1.5">
+            {/* Quick Mobile Cart Action (visible on mobile, enhanced on hover) */}
+            <button
+              onClick={handleAddToCart}
+              className="p-1.5 rounded-full bg-[#181714] border border-[rgba(201,164,92,0.25)] text-[#E9D5A0] hover:bg-[#C9A45C] hover:text-[#080807] transition-all touch-manipulation cursor-pointer sm:hidden"
+              aria-label={`Add ${product.name} to bag`}
+              title="Add to bag"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+            </button>
+
+            <Link
+              href={`/products/${product.slug}`}
+              className="text-[11px] sm:text-xs uppercase tracking-wider text-[#A8A197] hover:text-[#C9A45C] flex items-center gap-1 transition-colors"
+            >
+              Details →
+            </Link>
+          </div>
         </div>
       </div>
     </div>

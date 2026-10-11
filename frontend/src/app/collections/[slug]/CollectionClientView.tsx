@@ -25,9 +25,9 @@ export function CollectionClientView({ collection }: { collection: Collection })
     });
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
       {/* Breadcrumb / Back Link */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <Link
           href="/collections"
           className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#A8A197] hover:text-[#C9A45C] transition-colors"
@@ -38,21 +38,21 @@ export function CollectionClientView({ collection }: { collection: Collection })
       </div>
 
       {/* Editorial Collection Hero Banner */}
-      <div className="p-8 sm:p-14 bg-gradient-to-r from-[#14120E] via-[#11100E] to-[#0A0907] border border-[rgba(201,164,92,0.22)] mb-12 relative overflow-hidden">
+      <div className="p-6 sm:p-14 bg-gradient-to-r from-[#14120E] via-[#11100E] to-[#0A0907] border border-[rgba(201,164,92,0.22)] mb-8 sm:mb-12 relative overflow-hidden">
         <div className="max-w-2xl relative z-10">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C9A45C] mb-4">
+          <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#C9A45C] mb-3 sm:mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Curated Archive</span>
           </div>
 
           <h1
-            className="text-display-md sm:text-display-lg font-light text-[#F5F0E7] mb-4"
+            className="text-2xl sm:text-display-md lg:text-display-lg font-light text-[#F5F0E7] mb-3 sm:mb-4 leading-tight"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             {collection.name}
           </h1>
 
-          <p className="text-sm sm:text-base text-[#A8A197] font-light leading-relaxed">
+          <p className="text-xs sm:text-base text-[#A8A197] font-light leading-relaxed">
             {collection.description}
           </p>
         </div>

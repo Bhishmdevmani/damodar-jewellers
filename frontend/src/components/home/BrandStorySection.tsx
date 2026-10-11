@@ -4,16 +4,16 @@ import { siteConfig } from '@/lib/config';
 
 export function BrandStorySection() {
   return (
-    <section className="relative py-28 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto z-20 border-t border-[rgba(201,164,92,0.1)]">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section className="relative py-16 sm:py-28 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto z-20 border-t border-[rgba(201,164,92,0.1)]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
         {/* Left Column: Authentic Brand Heritage (7 cols) */}
         <div className="lg:col-span-7">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-4 font-light">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3 sm:mb-4 font-light">
             Our Heritage
           </span>
 
           <h2
-            className="text-display-md sm:text-display-lg font-light text-[#F5F0E7] mb-8 leading-[1.08]"
+            className="text-3xl sm:text-display-md lg:text-display-lg font-light text-[#F5F0E7] mb-6 sm:mb-8 leading-[1.08]"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             Rooted in Tradition. <br />

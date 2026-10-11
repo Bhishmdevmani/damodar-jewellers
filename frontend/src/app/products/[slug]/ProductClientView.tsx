@@ -56,9 +56,9 @@ export function ProductClientView({ product }: { product: Product }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
       {/* Breadcrumb Navigation */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <Link
           href={`/collections/${product.collectionSlug}`}
           className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#A8A197] hover:text-[#C9A45C] transition-colors"
@@ -69,9 +69,9 @@ export function ProductClientView({ product }: { product: Product }) {
       </div>
 
       {/* Main Product Showcase Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
-        {/* Left Column: Interactive 3D Viewer (7 cols) */}
-        <div className="lg:col-span-7 sticky top-24">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16 sm:mb-24">
+        {/* Left Column: Interactive 3D Viewer (7 cols) - sticky only on large screens */}
+        <div className="lg:col-span-7 lg:sticky lg:top-24">
           <ProductViewer3D
             modelType={modelType}
             title={`3D View — ${product.name}`}
@@ -91,7 +91,7 @@ export function ProductClientView({ product }: { product: Product }) {
           </div>
 
           <h1
-            className="text-display-sm sm:text-display-md font-light text-[#F5F0E7] mb-4 leading-tight"
+            className="text-2xl sm:text-display-sm lg:text-display-md font-light text-[#F5F0E7] mb-3 sm:mb-4 leading-tight"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             {product.name}
@@ -106,19 +106,19 @@ export function ProductClientView({ product }: { product: Product }) {
             />
           </div>
 
-          <p className="text-sm text-[#A8A197] leading-relaxed mb-8 font-light">
+          <p className="text-sm text-[#A8A197] leading-relaxed mb-6 sm:mb-8 font-light">
             {product.description}
           </p>
 
           {/* Precious Finish Selector */}
-          <div className="mb-8 p-4 bg-[#11100E] border border-[rgba(201,164,92,0.15)]">
+          <div className="mb-6 sm:mb-8 p-4 bg-[#11100E] border border-[rgba(201,164,92,0.15)] rounded-lg">
             <span className="text-xs uppercase tracking-widest text-[#A8A197] block mb-3">
               Selected Finish:
             </span>
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => setSelectedFinish('yellow_gold')}
-                className={`py-2 px-3 text-xs border transition-all text-center ${
+                className={`py-2 px-2 sm:px-3 text-xs border transition-all text-center rounded-sm ${
                   selectedFinish === 'yellow_gold'
                     ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#E9D5A0]'
                     : 'border-white/10 text-[#A8A197]'
@@ -128,7 +128,7 @@ export function ProductClientView({ product }: { product: Product }) {
               </button>
               <button
                 onClick={() => setSelectedFinish('rose_gold')}
-                className={`py-2 px-3 text-xs border transition-all text-center ${
+                className={`py-2 px-2 sm:px-3 text-xs border transition-all text-center rounded-sm ${
                   selectedFinish === 'rose_gold'
                     ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#E9D5A0]'
                     : 'border-white/10 text-[#A8A197]'
@@ -138,7 +138,7 @@ export function ProductClientView({ product }: { product: Product }) {
               </button>
               <button
                 onClick={() => setSelectedFinish('white_gold')}
-                className={`py-2 px-3 text-xs border transition-all text-center ${
+                className={`py-2 px-2 sm:px-3 text-xs border transition-all text-center rounded-sm ${
                   selectedFinish === 'white_gold'
                     ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#E9D5A0]'
                     : 'border-white/10 text-[#A8A197]'
@@ -150,21 +150,21 @@ export function ProductClientView({ product }: { product: Product }) {
           </div>
 
           {/* Quantity and Actions */}
-          <div className="flex items-center gap-4 mb-8">
-            <div className="flex items-center border border-[rgba(201,164,92,0.25)] bg-[#191713]">
+          <div className="flex items-center gap-2.5 sm:gap-4 mb-8">
+            <div className="flex items-center border border-[rgba(201,164,92,0.25)] bg-[#191713] rounded-sm">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-10 h-12 text-[#F5F0E7] hover:text-[#C9A45C] transition-colors"
+                className="w-8 sm:w-10 h-11 sm:h-12 text-[#F5F0E7] hover:text-[#C9A45C] transition-colors"
                 aria-label="Decrease quantity"
               >
                 -
               </button>
-              <span className="w-10 text-center text-sm font-medium text-[#F5F0E7]">
+              <span className="w-8 sm:w-10 text-center text-xs sm:text-sm font-medium text-[#F5F0E7]">
                 {quantity}
               </span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="w-10 h-12 text-[#F5F0E7] hover:text-[#C9A45C] transition-colors"
+                className="w-8 sm:w-10 h-11 sm:h-12 text-[#F5F0E7] hover:text-[#C9A45C] transition-colors"
                 aria-label="Increase quantity"
               >
                 +
@@ -173,7 +173,7 @@ export function ProductClientView({ product }: { product: Product }) {
 
             <button
               onClick={handleAddToCart}
-              className="btn-primary flex-1 py-3.5 text-center flex items-center justify-center gap-2"
+              className="btn-primary flex-1 py-3 sm:py-3.5 text-center flex items-center justify-center gap-2"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>Add to Bag</span>
@@ -182,7 +182,7 @@ export function ProductClientView({ product }: { product: Product }) {
             <button
               onClick={handleToggleWishlist}
               aria-label="Wishlist"
-              className={`w-12 h-12 border flex items-center justify-center transition-all ${
+              className={`w-11 sm:w-12 h-11 sm:h-12 border flex items-center justify-center transition-all rounded-sm shrink-0 ${
                 isWishlisted
                   ? 'border-[#C9A45C] bg-[#C9A45C] text-[#080807]'
                   : 'border-[rgba(201,164,92,0.25)] bg-[#191713] text-[#A8A197] hover:text-[#F5F0E7]'

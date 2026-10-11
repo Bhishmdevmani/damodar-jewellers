@@ -71,7 +71,7 @@ export function CollectionGallery() {
       </div>
 
       {/* 3D WebGL Circular Gallery Curved Vitrine Showcase */}
-      <div className="relative w-full h-[580px] sm:h-[640px] rounded-3xl overflow-hidden border border-[rgba(201,164,92,0.15)] bg-gradient-to-b from-[#0C0B0A]/95 via-[#080807] to-[#0A0A09] shadow-[0_24px_64px_rgba(0,0,0,0.85)]">
+      <div className="relative w-full h-[440px] sm:h-[560px] lg:h-[640px] rounded-2xl sm:rounded-3xl overflow-hidden border border-[rgba(201,164,92,0.15)] bg-gradient-to-b from-[#0C0B0A]/95 via-[#080807] to-[#0A0A09] shadow-[0_24px_64px_rgba(0,0,0,0.85)] touch-pan-y">
         {/* Subtle ambient luxury light aura */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[radial-gradient(ellipse_at_top,rgba(201,164,92,0.12),transparent_70%)] pointer-events-none z-10" />
 

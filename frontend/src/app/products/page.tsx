@@ -140,44 +140,44 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 lg:pt-32 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
       {/* ───────────────────────────────────────────────────────────────────────── */}
       {/* EDITORIAL HEADER & PROVENANCE */}
       {/* ───────────────────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-12 gap-6 sm:gap-8">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#C9A45C]/30 bg-[#C9A45C]/5 mb-4 rounded-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#C9A45C]/30 bg-[#C9A45C]/5 mb-3 sm:mb-4 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-[#C9A45C]" />
-            <span className="text-[11px] uppercase tracking-[0.2em] text-[#E9D5A0] font-medium">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#E9D5A0] font-medium">
               High Jewellery Acquisitions & Pricing Catalog
             </span>
           </div>
 
           <h1
-            className="text-display-md sm:text-display-lg font-light text-[#F5F0E7] leading-tight mb-4"
+            className="text-3xl sm:text-display-md lg:text-display-lg font-light text-[#F5F0E7] leading-tight mb-3 sm:mb-4"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             The Permanent <br />
             <span className="text-gold-gradient italic">Product Archive.</span>
           </h1>
 
-          <p className="text-base text-[#A8A197] font-light leading-relaxed">
+          <p className="text-sm sm:text-base text-[#A8A197] font-light leading-relaxed">
             Every creation is consolidated here with verified transparent pricing, carat specifications, hallmark certificates, and direct acquisition options.
           </p>
         </div>
 
         {/* Hallmark Assurance Badges */}
-        <div className="flex flex-wrap items-center gap-6 border-l border-[rgba(201,164,92,0.2)] pl-6">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 border-t sm:border-t-0 sm:border-l border-[rgba(201,164,92,0.2)] pt-4 sm:pt-0 sm:pl-6">
           <div>
-            <span className="block text-xl font-light text-[#E9D5A0] font-serif">BIS 916</span>
+            <span className="block text-lg sm:text-xl font-light text-[#E9D5A0] font-serif">BIS 916</span>
             <span className="text-[10px] uppercase tracking-wider text-[#A8A197]">Solid Gold Purity</span>
           </div>
           <div>
-            <span className="block text-xl font-light text-[#E9D5A0] font-serif">100% GIA</span>
+            <span className="block text-lg sm:text-xl font-light text-[#E9D5A0] font-serif">100% GIA</span>
             <span className="text-[10px] uppercase tracking-wider text-[#A8A197]">Graded Diamonds</span>
           </div>
           <div>
-            <span className="block text-xl font-light text-[#E9D5A0] font-serif">Direct</span>
+            <span className="block text-lg sm:text-xl font-light text-[#E9D5A0] font-serif">Direct</span>
             <span className="text-[10px] uppercase tracking-wider text-[#A8A197]">Atelier Pricing</span>
           </div>
         </div>
@@ -186,14 +186,14 @@ export default function ProductsPage() {
       {/* ───────────────────────────────────────────────────────────────────────── */}
       {/* FEATURED SPOTLIGHT MEDIA REEL (Using RoundedGalleryView) ─────────────── */}
       {/* ───────────────────────────────────────────────────────────────────────── */}
-      <div className="mb-16">
+      <div className="mb-10 sm:mb-16">
         <div className="flex items-center justify-between mb-4">
           <span className="text-xs uppercase tracking-[0.2em] text-[#C9A45C] flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Spotlight Media Inspection Reel</span>
           </span>
           <span className="text-xs text-[#A8A197] font-mono">
-            {SPOTLIGHT_MEDIA.length} Featured Archival Highlights
+            {SPOTLIGHT_MEDIA.length} Highlights
           </span>
         </div>
 
@@ -208,8 +208,8 @@ export default function ProductsPage() {
       {/* ───────────────────────────────────────────────────────────────────────── */}
       {/* INTERACTIVE FILTERS & SORTING SUITE ─────────────────────────────────────── */}
       {/* ───────────────────────────────────────────────────────────────────────── */}
-      <div className="p-6 rounded-2xl bg-[#11100E] border border-[rgba(201,164,92,0.18)] mb-12 shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 pb-6 border-b border-[rgba(201,164,92,0.1)]">
+      <div className="p-4 sm:p-6 rounded-2xl bg-[#11100E] border border-[rgba(201,164,92,0.18)] mb-8 sm:mb-12 shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-[rgba(201,164,92,0.1)]">
           {/* Search input */}
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A8A197]" />
@@ -223,12 +223,12 @@ export default function ProductsPage() {
           </div>
 
           {/* Sort selector */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between sm:justify-start gap-3">
             <span className="text-xs text-[#A8A197] whitespace-nowrap">Sort by:</span>
             <select
               value={priceSort}
               onChange={(e) => setPriceSort(e.target.value as any)}
-              className="px-4 py-2 rounded-full bg-[#080807] border border-[rgba(201,164,92,0.2)] text-xs text-[#E9D5A0] focus:border-[#C9A45C] focus:outline-none cursor-pointer"
+              className="px-4 py-2 rounded-full bg-[#080807] border border-[rgba(201,164,92,0.2)] text-xs text-[#E9D5A0] focus:border-[#C9A45C] focus:outline-none cursor-pointer flex-1 sm:flex-initial"
             >
               <option value="featured">Featured Archive</option>
               <option value="price_desc">Price: High to Low</option>
@@ -238,10 +238,10 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pt-6">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-[#A8A197] mr-1 flex items-center gap-1">
+        {/* Filter Pills with horizontal scroll on mobile */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 sm:pt-6">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none flex-nowrap sm:flex-wrap w-full sm:w-auto">
+            <span className="text-xs text-[#A8A197] mr-1 flex items-center gap-1 shrink-0">
               <SlidersHorizontal className="w-3.5 h-3.5 text-[#C9A45C]" />
               <span>Category:</span>
             </span>
@@ -255,7 +255,7 @@ export default function ProductsPage() {
                 <button
                   key={cat.key}
                   onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-3.5 py-1.5 text-xs rounded-full border transition-all ${
+                  className={`px-3.5 py-1.5 text-xs rounded-full border transition-all whitespace-nowrap shrink-0 ${
                     isSelected
                       ? 'border-[#C9A45C] bg-[#C9A45C]/20 text-[#E9D5A0] font-medium'
                       : 'border-white/10 text-[#A8A197] hover:text-[#F5F0E7] hover:border-white/20'
@@ -267,9 +267,9 @@ export default function ProductsPage() {
             })}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
             <span className="text-xs font-mono text-[#C9A45C]">
-              {filteredProducts.length} Creations Available
+              {filteredProducts.length} Creations
             </span>
             {(selectedCategory !== 'all' || selectedMaterial !== 'all' || searchQuery) && (
               <button

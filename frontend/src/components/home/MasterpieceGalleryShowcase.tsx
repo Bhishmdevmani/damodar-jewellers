@@ -95,14 +95,14 @@ export function MasterpieceGalleryShowcase() {
   return (
     <div className="relative w-full z-20">
       {/* SECTION HEADER & CATEGORY TABS */}
-      <div className="pt-24 pb-10 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div className="pt-16 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
           <div>
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3 font-light">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-2 sm:mb-3 font-light">
               High Jewellery Gallery
             </span>
             <h2
-              className="text-display-md font-light text-[#F5F0E7] leading-tight"
+              className="text-2xl sm:text-display-md font-light text-[#F5F0E7] leading-tight"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
               Curated Masterpieces & <br />
@@ -120,7 +120,7 @@ export function MasterpieceGalleryShowcase() {
         </div>
 
         {/* EDITORIAL CATEGORY NAV */}
-        <div className="flex items-center gap-8 overflow-x-auto pb-4 scrollbar-none border-b border-[rgba(201,164,92,0.12)]">
+        <div className="flex items-center gap-5 sm:gap-8 overflow-x-auto pb-3 sm:pb-4 scrollbar-none border-b border-[rgba(201,164,92,0.12)]">
           {[
             { key: 'all', label: 'All Creations' },
             { key: 'necklaces', label: 'Royal Necklaces' },
@@ -134,7 +134,7 @@ export function MasterpieceGalleryShowcase() {
               <button
                 key={tab.key}
                 onClick={() => setActiveCategory(tab.key as CategoryFilter)}
-                className={`relative pb-3 text-xs uppercase tracking-[0.18em] transition-colors whitespace-nowrap ${
+                className={`relative pb-3 text-xs uppercase tracking-[0.18em] transition-colors whitespace-nowrap shrink-0 ${
                   isActive
                     ? 'text-[#E9D5A0] font-medium'
                     : 'text-[#A8A197]/70 hover:text-[#F5F0E7]'
@@ -155,7 +155,7 @@ export function MasterpieceGalleryShowcase() {
       </div>
 
       {/* DOLLY GALLERY SHOWCASE */}
-      <div className="px-4 sm:px-8 lg:px-16 max-w-[1520px] mx-auto mb-8">
+      <div className="px-2 sm:px-8 lg:px-16 max-w-[1520px] mx-auto mb-8">
         <DollyGallery
           items={filteredItems}
           onInspect={(item) => setInspectedItem(item as GalleryShowcaseItem)}

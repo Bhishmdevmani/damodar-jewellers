@@ -12,13 +12,13 @@ export default function WishlistPage() {
   const wishlistedProducts = demoProducts.filter((p) => items.includes(p.id));
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
-      <div className="max-w-2xl mb-12">
-        <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+      <div className="max-w-2xl mb-8 sm:mb-12">
+        <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-2 sm:mb-3">
           Your Personal Vault
         </span>
         <h1
-          className="text-display-md font-light text-[#F5F0E7] mb-4 leading-tight"
+          className="text-2xl sm:text-display-md font-light text-[#F5F0E7] mb-3 sm:mb-4 leading-tight"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           Saved Creations ({items.length})

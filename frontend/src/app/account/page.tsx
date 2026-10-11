@@ -40,19 +40,19 @@ export default function AccountPage() {
 
   // When Authenticated: Display the Patron Portal
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto text-[#F5F0E7]">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto text-[#F5F0E7]">
       {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-[rgba(201,164,92,0.15)] pb-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6 border-b border-[rgba(201,164,92,0.15)] pb-6 sm:pb-8">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] font-mono">
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#C9A45C] font-mono">
               Authenticated Patron Portal
             </span>
           </div>
 
           <h1
-            className="text-display-md font-light text-[#F5F0E7]"
+            className="text-2xl sm:text-display-md font-light text-[#F5F0E7]"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             Welcome, {user.name}
@@ -138,7 +138,7 @@ export default function AccountPage() {
         </div>
 
         {/* Tab Content (8 cols) */}
-        <div className="lg:col-span-8 p-8 sm:p-10 rounded-2xl bg-[#11100E] border border-[rgba(201,164,92,0.18)] shadow-xl">
+        <div className="lg:col-span-8 p-5 sm:p-8 lg:p-10 rounded-2xl bg-[#11100E] border border-[rgba(201,164,92,0.18)] shadow-xl">
           {activeTab === 'orders' && (
             <div>
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-[rgba(201,164,92,0.12)]">

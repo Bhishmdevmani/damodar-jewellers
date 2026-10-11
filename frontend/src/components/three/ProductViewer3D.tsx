@@ -275,7 +275,7 @@ export function ProductViewer3D({
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
-        className={`relative w-full h-[400px] sm:h-[480px] lg:h-[540px] cursor-grab ${
+        className={`relative w-full h-[320px] sm:h-[440px] lg:h-[520px] cursor-grab touch-pan-y ${
           isInteracting ? 'cursor-grabbing' : ''
         }`}
       >
@@ -306,27 +306,27 @@ export function ProductViewer3D({
 
         {/* Floating Zoom & Reset Toolbar */}
         {showControls && hasWebGL && (
-          <div className="absolute right-4 top-4 z-10 flex flex-col gap-2">
+          <div className="absolute right-3 sm:right-4 top-3 sm:top-4 z-10 flex flex-col gap-2">
             <button
               onClick={() => handleZoom('in')}
               aria-label="Zoom in"
-              className="w-8 h-8 rounded-full bg-[#191713]/80 border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#F5F0E7] hover:border-[#C9A45C] flex items-center justify-center transition-all backdrop-blur-md"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#191713]/85 border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#F5F0E7] hover:border-[#C9A45C] flex items-center justify-center transition-all backdrop-blur-md"
             >
-              <ZoomIn className="w-4 h-4" />
+              <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
             <button
               onClick={() => handleZoom('out')}
               aria-label="Zoom out"
-              className="w-8 h-8 rounded-full bg-[#191713]/80 border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#F5F0E7] hover:border-[#C9A45C] flex items-center justify-center transition-all backdrop-blur-md"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#191713]/85 border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#F5F0E7] hover:border-[#C9A45C] flex items-center justify-center transition-all backdrop-blur-md"
             >
-              <ZoomOut className="w-4 h-4" />
+              <ZoomOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
             <button
               onClick={() => setCameraAngle('angle')}
               aria-label="Reset view"
-              className="w-8 h-8 rounded-full bg-[#191713]/80 border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#F5F0E7] hover:border-[#C9A45C] flex items-center justify-center transition-all backdrop-blur-md"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#191713]/85 border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#F5F0E7] hover:border-[#C9A45C] flex items-center justify-center transition-all backdrop-blur-md"
             >
-              <RefreshCw className="w-3.5 h-3.5" />
+              <RefreshCw className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             </button>
           </div>
         )}
@@ -334,67 +334,69 @@ export function ProductViewer3D({
 
       {/* Interactive Customization Bar */}
       {showControls && hasWebGL && (
-        <div className="p-4 sm:p-5 border-t border-[rgba(201,164,92,0.14)] bg-[#11100E] z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-3.5 sm:p-5 border-t border-[rgba(201,164,92,0.14)] bg-[#11100E] z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
           {/* Metal Finish Selector */}
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <span className="text-[11px] uppercase tracking-widest text-[#A8A197]">
-              Precious Finish:
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#A8A197]">
+              Finish:
             </span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 onClick={() => handleFinishChange('yellow_gold')}
-                className={`px-3 py-1.5 text-xs border transition-all flex items-center gap-1.5 ${
+                className={`px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-xs border transition-all flex items-center gap-1.5 rounded-sm ${
                   activeFinish === 'yellow_gold'
                     ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#E9D5A0]'
                     : 'border-white/10 text-[#A8A197] hover:border-white/20'
                 }`}
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#D4AF37] inline-block shadow-sm" />
+                <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#D4AF37] inline-block shadow-sm" />
                 22K Gold
               </button>
               <button
                 onClick={() => handleFinishChange('rose_gold')}
-                className={`px-3 py-1.5 text-xs border transition-all flex items-center gap-1.5 ${
+                className={`px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-xs border transition-all flex items-center gap-1.5 rounded-sm ${
                   activeFinish === 'rose_gold'
                     ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#E9D5A0]'
                     : 'border-white/10 text-[#A8A197] hover:border-white/20'
                 }`}
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#E0A389] inline-block shadow-sm" />
-                Rose Gold
+                <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#E0A389] inline-block shadow-sm" />
+                Rose
               </button>
               <button
                 onClick={() => handleFinishChange('white_gold')}
-                className={`px-3 py-1.5 text-xs border transition-all flex items-center gap-1.5 ${
+                className={`px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-xs border transition-all flex items-center gap-1.5 rounded-sm ${
                   activeFinish === 'white_gold'
                     ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#E9D5A0]'
                     : 'border-white/10 text-[#A8A197] hover:border-white/20'
                 }`}
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#E8ECF0] inline-block shadow-sm" />
+                <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#E8ECF0] inline-block shadow-sm" />
                 Platinum
               </button>
             </div>
           </div>
 
           {/* Camera Angles */}
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-            <span className="text-[11px] uppercase tracking-widest text-[#A8A197]">
-              Perspective:
+          <div className="flex items-center gap-1.5 sm:gap-2 justify-between sm:justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-[rgba(201,164,92,0.08)]">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#A8A197]">
+              View:
             </span>
-            {(['angle', 'front', 'top', 'macro'] as const).map((angle) => (
-              <button
-                key={angle}
-                onClick={() => setCameraAngle(angle)}
-                className={`text-xs px-2.5 py-1 uppercase tracking-wider border transition-all ${
-                  activeAngle === angle
-                    ? 'border-[#C9A45C] text-[#E9D5A0] bg-[#C9A45C]/10'
-                    : 'border-white/5 text-[#A8A197] hover:border-white/15'
-                }`}
-              >
-                {angle}
-              </button>
-            ))}
+            <div className="flex items-center gap-1">
+              {(['angle', 'front', 'top', 'macro'] as const).map((angle) => (
+                <button
+                  key={angle}
+                  onClick={() => setCameraAngle(angle)}
+                  className={`text-[10px] sm:text-xs px-2 sm:px-2.5 py-1 uppercase tracking-wider border transition-all rounded-sm ${
+                    activeAngle === angle
+                      ? 'border-[#C9A45C] text-[#E9D5A0] bg-[#C9A45C]/10'
+                      : 'border-white/5 text-[#A8A197] hover:border-white/15'
+                  }`}
+                >
+                  {angle}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}

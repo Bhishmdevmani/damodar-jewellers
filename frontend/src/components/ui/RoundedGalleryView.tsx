@@ -60,11 +60,32 @@ export function RoundedGalleryView({
     setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
   };
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    setTouchStartX(null);
+  };
+
   return (
     <div className={`relative flex flex-col gap-4 ${className}`}>
       {/* ── Main Media Display Stage ── */}
       <div
-        className={`relative w-full ${aspectClasses} ${roundedClasses} overflow-hidden bg-gradient-to-b from-[#14120E] via-[#0E0D0B] to-[#080807] border border-[rgba(201,164,92,0.22)] shadow-[0_25px_60px_rgba(0,0,0,0.8)] group select-none`}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className={`relative w-full ${aspectClasses} ${roundedClasses} overflow-hidden bg-gradient-to-b from-[#14120E] via-[#0E0D0B] to-[#080807] border border-[rgba(201,164,92,0.22)] shadow-[0_25px_60px_rgba(0,0,0,0.8)] group select-none touch-pan-y`}
       >
         {/* Ambient Radial Illumination */}
         <div className="absolute inset-0 bg-radial-at-c from-[rgba(201,164,92,0.12)] via-transparent to-transparent pointer-events-none" />
@@ -77,7 +98,7 @@ export function RoundedGalleryView({
             animate={{ opacity: 1, scale: isZoomed ? 1.25 : 1 }}
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 flex items-center justify-center p-6 sm:p-10"
+            className="absolute inset-0 flex items-center justify-center p-4 sm:p-10"
             onClick={() => setIsZoomed(!isZoomed)}
             style={{ cursor: isZoomed ? 'zoom-out' : 'zoom-in' }}
           >
@@ -91,12 +112,12 @@ export function RoundedGalleryView({
         </AnimatePresence>
 
         {/* Top Badges & Controls */}
-        <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex items-center justify-between z-20 pointer-events-none">
+        <div className="absolute top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between z-20 pointer-events-none">
           {currentItem.badge ? (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#11100E]/85 backdrop-blur-md border border-[#C9A45C]/30 text-[10px] uppercase tracking-widest text-[#E9D5A0] shadow-lg pointer-events-auto"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#11100E]/90 backdrop-blur-md border border-[#C9A45C]/30 text-[9px] sm:text-[10px] uppercase tracking-widest text-[#E9D5A0] shadow-lg pointer-events-auto"
             >
               <Sparkles className="w-3 h-3 text-[#C9A45C]" />
               <span>{currentItem.badge}</span>
@@ -106,7 +127,7 @@ export function RoundedGalleryView({
           <div className="flex items-center gap-2 pointer-events-auto">
             <button
               onClick={() => setIsZoomed(!isZoomed)}
-              className="p-2 rounded-full bg-[#11100E]/85 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] transition-all shadow-md"
+              className="p-2 rounded-full bg-[#11100E]/90 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] transition-all shadow-md active:scale-95"
               title={isZoomed ? 'Reset Zoom' : 'Zoom In'}
             >
               <ZoomIn className={`w-3.5 h-3.5 ${isZoomed ? 'text-[#C9A45C]' : ''}`} />
@@ -115,7 +136,7 @@ export function RoundedGalleryView({
             {onInspect && (
               <button
                 onClick={() => onInspect(currentItem)}
-                className="p-2 rounded-full bg-[#11100E]/85 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] transition-all shadow-md"
+                className="p-2 rounded-full bg-[#11100E]/90 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] transition-all shadow-md active:scale-95"
                 title="Inspect in High Resolution"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
@@ -130,7 +151,7 @@ export function RoundedGalleryView({
             <button
               onClick={handlePrev}
               aria-label="Previous view"
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-[#11100E]/85 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] hover:scale-105 transition-all opacity-0 group-hover:opacity-100 z-20 shadow-lg"
+              className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-[#11100E]/90 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] active:scale-95 transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 z-20 shadow-lg"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -138,7 +159,7 @@ export function RoundedGalleryView({
             <button
               onClick={handleNext}
               aria-label="Next view"
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-[#11100E]/85 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] hover:scale-105 transition-all opacity-0 group-hover:opacity-100 z-20 shadow-lg"
+              className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-[#11100E]/90 backdrop-blur-md border border-[rgba(201,164,92,0.25)] text-[#A8A197] hover:text-[#E9D5A0] hover:border-[#C9A45C] active:scale-95 transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 z-20 shadow-lg"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

@@ -59,24 +59,24 @@ export function CartDrawer() {
           />
 
           {/* Slide-over panel */}
-          <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+          <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
             <motion.aside
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="w-screen max-w-md bg-[#0E0D0B] border-l border-[rgba(201,164,92,0.22)] shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex flex-col justify-between"
+              className="w-screen max-w-full sm:max-w-md bg-[#0E0D0B] border-l border-[rgba(201,164,92,0.22)] shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex flex-col justify-between"
               style={{ fontFamily: 'var(--font-sans)' }}
             >
               {/* Header */}
-              <div className="p-6 border-b border-[rgba(201,164,92,0.15)] flex items-center justify-between">
+              <div className="p-4 sm:p-6 border-b border-[rgba(201,164,92,0.15)] flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl bg-[#181714] border border-[rgba(201,164,92,0.3)] flex items-center justify-center text-[#C9A45C]">
                     <ShoppingBag className="w-4 h-4" />
                   </div>
                   <div>
                     <h2
-                      className="text-lg text-[#F5F0E7] font-light tracking-wide flex items-center gap-2"
+                      className="text-base sm:text-lg text-[#F5F0E7] font-light tracking-wide flex items-center gap-2"
                       style={{ fontFamily: 'var(--font-serif)' }}
                     >
                       <span>Shopping Bag</span>
@@ -84,7 +84,7 @@ export function CartDrawer() {
                         {itemCount}
                       </span>
                     </h2>
-                    <p className="text-[11px] text-[#A8A197]/80">
+                    <p className="text-[10px] sm:text-[11px] text-[#A8A197]/80">
                       Complimentary Insured Delivery Across India
                     </p>
                   </div>
@@ -101,7 +101,7 @@ export function CartDrawer() {
               </div>
 
               {/* Body: Items List or Empty State */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4">
                 {items.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center py-12 space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-[#161512] border border-[rgba(201,164,92,0.2)] flex items-center justify-center text-[#C9A45C]/60 shadow-inner">
@@ -127,14 +127,14 @@ export function CartDrawer() {
                     </Link>
                   </div>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {items.map((item) => (
                       <div
                         key={`${item.product.id}-${JSON.stringify(item.selectedAttributes)}`}
-                        className="p-4 rounded-xl bg-[#141310] border border-[rgba(201,164,92,0.18)] flex gap-4 items-center group transition-colors hover:border-[rgba(201,164,92,0.35)]"
+                        className="p-3 sm:p-4 rounded-xl bg-[#141310] border border-[rgba(201,164,92,0.18)] flex gap-3 sm:gap-4 items-center group transition-colors hover:border-[rgba(201,164,92,0.35)]"
                       >
                         {/* Thumbnail */}
-                        <div className="w-20 h-20 rounded-xl overflow-hidden bg-black/60 border border-[rgba(201,164,92,0.15)] flex items-center justify-center shrink-0 p-1">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-black/60 border border-[rgba(201,164,92,0.15)] flex items-center justify-center shrink-0 p-1">
                           {item.product.images?.[0]?.url ? (
                             <img
                               src={
@@ -211,7 +211,7 @@ export function CartDrawer() {
 
               {/* Footer / Summary */}
               {items.length > 0 && (
-                <div className="p-6 border-t border-[rgba(201,164,92,0.18)] bg-[#11100E] space-y-4">
+                <div className="p-4 sm:p-6 border-t border-[rgba(201,164,92,0.18)] bg-[#11100E] space-y-3.5 sm:space-y-4">
                   {/* Trust indicator */}
                   <div className="flex items-center justify-between text-[11px] text-[#A8A197] font-mono pb-2 border-b border-[rgba(201,164,92,0.08)]">
                     <span className="flex items-center gap-1.5">

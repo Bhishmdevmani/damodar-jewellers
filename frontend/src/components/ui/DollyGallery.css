@@ -6,8 +6,8 @@
   transform-style: preserve-3d;
   position: relative;
   width: 100%;
-  min-height: 720px;
-  height: 760px;
+  min-height: 520px;
+  height: 560px;
   overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
@@ -15,6 +15,21 @@
   background: radial-gradient(ellipse at 50% 35%, #161512 0%, #0d0c0a 50%, #060605 100%);
   border: 1px solid rgba(201, 164, 92, 0.22);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(201, 164, 92, 0.15);
+  touch-action: pan-y;
+}
+
+@media (min-width: 640px) {
+  .dolly-viewport {
+    min-height: 640px;
+    height: 680px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dolly-viewport {
+    min-height: 720px;
+    height: 760px;
+  }
 }
 
 /* Atmospheric 3D spatial field */

@@ -47,6 +47,7 @@ html {
 
 html {
   overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -54,6 +55,17 @@ body {
   color: var(--color-ivory);
   font-family: var(--font-sans);
   overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Hide scrollbar on mobile carousel/tabs while preserving scrolling */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {

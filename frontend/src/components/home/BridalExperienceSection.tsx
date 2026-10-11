@@ -5,44 +5,44 @@ import { ArrowRight } from 'lucide-react';
 
 export function BridalExperienceSection() {
   return (
-    <section className="relative py-28 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto z-20">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section className="relative py-16 sm:py-28 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto z-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
         {/* Left Narrative (7 cols) */}
         <div className="lg:col-span-7 max-w-2xl">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-4 font-light">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3 sm:mb-4 font-light">
             The Bridal Haute Parure
           </span>
 
           <h2
-            className="text-display-md sm:text-display-lg font-light text-[#F5F0E7] mb-6 leading-[1.05]"
+            className="text-3xl sm:text-display-md lg:text-display-lg font-light text-[#F5F0E7] mb-4 sm:mb-6 leading-[1.08] sm:leading-[1.05]"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             For the Beginning <br />
             <span className="text-gold-gradient italic font-normal">of Forever.</span>
           </h2>
 
-          <p className="text-base text-[#A8A197] leading-relaxed mb-10 font-light max-w-xl">
+          <p className="text-sm sm:text-base text-[#A8A197] leading-relaxed mb-8 sm:mb-10 font-light max-w-xl">
             A sacred celebration calls for generational poise. Our bridal parures marry classical temple Kundan geometry with weightless ergonomics, ensuring each royal choker, raani haar, and maang tikka drapes like a second skin as you step into your legacy.
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-12">
             <Link
               href="/collections/bridal-jewellery"
-              className="btn-primary py-3.5 px-8 text-xs tracking-wider rounded-full flex items-center gap-2"
+              className="btn-primary py-3.5 px-8 text-xs tracking-wider rounded-full flex items-center justify-center gap-2 text-center"
             >
               <span>Explore Bridal Collection</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
               href="/contact"
-              className="text-xs tracking-wider text-[#E9D5A0] hover:text-[#F5F0E7] transition-colors border-b border-[#C9A45C]/40 pb-0.5"
+              className="text-xs tracking-wider text-[#E9D5A0] hover:text-[#F5F0E7] transition-colors border-b border-[#C9A45C]/40 pb-0.5 text-center self-center sm:self-auto"
             >
               Book Private Consultation
             </Link>
           </div>
 
           {/* Quiet Hallmarks */}
-          <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs tracking-wide text-[#A8A197] font-light pt-6 border-t border-[rgba(201,164,92,0.12)]">
+          <div className="flex flex-wrap items-center gap-y-2 gap-x-3 sm:gap-x-6 text-[11px] sm:text-xs tracking-wide text-[#A8A197] font-light pt-6 border-t border-[rgba(201,164,92,0.12)]">
             <span>22K BIS 916 Hallmarked</span>
             <span className="text-[#C9A45C]">•</span>
             <span>Natural Basra Pearls</span>

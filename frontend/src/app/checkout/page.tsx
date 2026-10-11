@@ -263,9 +263,9 @@ export default function CheckoutPage() {
   // 3. MAIN CHECKOUT WORKFLOW
   // ========================================================
   return (
-    <div className="min-h-screen bg-[#070605] text-[#F5F0E7] pt-28 pb-24 px-4 sm:px-8 lg:px-16 max-w-[1440px] mx-auto">
+    <div className="min-h-screen bg-[#070605] text-[#F5F0E7] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-8 lg:px-16 max-w-[1440px] mx-auto">
       {/* Top Breadcrumb & Progress Stepper */}
-      <div className="mb-8 pb-6 border-b border-[rgba(201,164,92,0.12)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="mb-6 sm:mb-8 pb-4 sm:pb-6 border-b border-[rgba(201,164,92,0.12)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <Link
             href="/cart"
@@ -283,17 +283,17 @@ export default function CheckoutPage() {
         </div>
 
         {/* 3-Step Breadcrumb Indicator */}
-        <div className="flex items-center gap-2 text-xs font-mono">
-          <Link href="/cart" className="text-[#A8A197] hover:text-[#E9D5A0] transition-colors">
+        <div className="flex items-center gap-2 text-xs font-mono overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+          <Link href="/cart" className="text-[#A8A197] hover:text-[#E9D5A0] transition-colors shrink-0">
             1. Bag
           </Link>
-          <span className="text-[#A8A197]/40">/</span>
-          <span className="text-[#E9D5A0] font-semibold flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(201,164,92,0.12)] border border-[rgba(201,164,92,0.25)]">
+          <span className="text-[#A8A197]/40 shrink-0">/</span>
+          <span className="text-[#E9D5A0] font-semibold flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(201,164,92,0.12)] border border-[rgba(201,164,92,0.25)] shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A45C]" />
             2. Delivery & Payment
           </span>
-          <span className="text-[#A8A197]/40">/</span>
-          <span className="text-[#A8A197]/60">3. Confirmation</span>
+          <span className="text-[#A8A197]/40 shrink-0">/</span>
+          <span className="text-[#A8A197]/60 shrink-0">3. Confirmation</span>
         </div>
       </div>
 
@@ -304,7 +304,7 @@ export default function CheckoutPage() {
         <div className="lg:col-span-7 space-y-6">
           <form onSubmit={handleCheckout} className="space-y-6">
             {/* Section 1: Contact Information */}
-            <div className="rounded-2xl bg-[#0E0D0B] border border-[rgba(201,164,92,0.2)] p-6 sm:p-8 shadow-xl">
+            <div className="rounded-2xl bg-[#0E0D0B] border border-[rgba(201,164,92,0.2)] p-5 sm:p-8 shadow-xl">
               <h2
                 className="text-lg font-light text-[#F5F0E7] mb-4 pb-3 border-b border-[rgba(201,164,92,0.12)] flex items-center justify-between"
                 style={{ fontFamily: 'var(--font-serif)' }}
@@ -614,8 +614,8 @@ export default function CheckoutPage() {
         {/* ======================================================== */}
         {/* RIGHT COLUMN: STICKY ORDER SUMMARY (5 COLS)              */}
         {/* ======================================================== */}
-        <div className="lg:col-span-5 sticky top-28 space-y-6">
-          <div className="rounded-2xl bg-[#0E0D0B] border border-[rgba(201,164,92,0.22)] p-6 sm:p-8 shadow-2xl space-y-6">
+        <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+          <div className="rounded-2xl bg-[#0E0D0B] border border-[rgba(201,164,92,0.22)] p-5 sm:p-8 shadow-2xl space-y-6">
             {/* Header */}
             <div className="flex items-center justify-between pb-4 border-b border-[rgba(201,164,92,0.15)]">
               <h2

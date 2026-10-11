@@ -332,34 +332,34 @@ export function AuthScreen({ initialMode = 'signin', redirectTo = '/account' }: 
       {/* 1. HEADER                                                */}
       {/* Issue 4 Fix: Title Case brand name to eliminate 17 chars all-caps */}
       {/* ======================================================== */}
-      <header className="relative z-20 w-full max-w-[1520px] mx-auto px-6 sm:px-10 lg:px-16 pt-8 pb-4 flex items-center justify-between border-b border-[rgba(201,164,92,0.12)]">
+      <header className="relative z-20 w-full max-w-[1520px] mx-auto px-4 sm:px-10 lg:px-16 pt-6 sm:pt-8 pb-4 flex items-center justify-between border-b border-[rgba(201,164,92,0.12)]">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 text-xs text-[#A8A197] hover:text-[#E9D5A0] transition-colors py-2 px-3 rounded-xl hover:bg-white/[0.03] group"
+          className="inline-flex items-center gap-2 text-xs text-[#A8A197] hover:text-[#E9D5A0] transition-colors py-2 px-2.5 sm:px-3 rounded-xl hover:bg-white/[0.03] group"
         >
           <ArrowLeft className="w-4 h-4 text-[#C9A45C] group-hover:-translate-x-1 transition-transform" />
-          <span className="font-light">Return to Store</span>
+          <span className="font-light hidden sm:inline">Return to Store</span>
         </Link>
 
         {/* Brand Title: Sentence/Title Case to resolve Issue 4 */}
         <Link href="/" className="flex flex-col items-center group">
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1">
             <span className="text-[#C9A45C] text-xs">✦</span>
             <span
-              className="text-xl tracking-[0.14em] text-gold-gradient font-light"
+              className="text-lg sm:text-xl tracking-[0.14em] text-gold-gradient font-light"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
               Damodar Jewellers
             </span>
             <span className="text-[#C9A45C] text-xs">✦</span>
           </div>
-          <span className="text-xs text-[#A8A197]/80 tracking-wider font-mono">
+          <span className="text-[10px] sm:text-xs text-[#A8A197]/80 tracking-wider font-mono">
             Fine Jewellery · Established 1974
           </span>
         </Link>
 
         {/* Balanced Header Spacer */}
-        <div className="w-28 hidden sm:block" />
+        <div className="w-8 sm:w-28" />
       </header>
 
       {/* ======================================================== */}
@@ -447,7 +447,7 @@ export function AuthScreen({ initialMode = 'signin', redirectTo = '/account' }: 
           {/* RIGHT PANEL: AUTHENTICATION FORM (7 COLS)                */}
           {/* Issue 2 Fix: uses rounded-2xl to consolidate corner radii */}
           {/* ======================================================== */}
-          <div className="lg:col-span-7 flex flex-col justify-center rounded-2xl p-6 sm:p-10 md:p-12 bg-[#0E0D0B]/95 backdrop-blur-2xl border border-[rgba(201,164,92,0.28)] shadow-[0_35px_100px_rgba(0,0,0,0.98)] relative overflow-hidden">
+          <div className="lg:col-span-7 flex flex-col justify-center rounded-2xl p-5 sm:p-10 md:p-12 bg-[#0E0D0B]/95 backdrop-blur-2xl border border-[rgba(201,164,92,0.28)] shadow-[0_35px_100px_rgba(0,0,0,0.98)] relative overflow-hidden">
             {/* Top Glowing Edge Bar */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A45C] to-transparent opacity-75" />
 
@@ -910,7 +910,7 @@ export function AuthScreen({ initialMode = 'signin', redirectTo = '/account' }: 
                       <label className="block text-xs text-[#C9A45C] font-mono mb-3 text-center">
                         Enter 6-Digit Verification Code
                       </label>
-                      <div className="flex items-center justify-center gap-2 sm:gap-3" role="group" aria-label="One-time password">
+                      <div className="flex items-center justify-center gap-1.5 sm:gap-3" role="group" aria-label="One-time password">
                         {otpDigits.map((digit, idx) => (
                           <input
                             key={`otp-${idx}`}
@@ -924,7 +924,7 @@ export function AuthScreen({ initialMode = 'signin', redirectTo = '/account' }: 
                             value={digit}
                             onChange={(e) => handleOtpDigitChange(idx, e.target.value)}
                             onKeyDown={(e) => handleOtpKeyDown(idx, e)}
-                            className="w-11 sm:w-12 h-14 sm:h-16 text-center text-xl font-mono font-semibold rounded-xl bg-[#161512] border border-[rgba(201,164,92,0.3)] focus:border-[#E9D5A0] focus:ring-2 focus:ring-[#C9A45C]/40 text-[#F5F0E7] outline-none transition-all shadow-inner"
+                            className="w-10 sm:w-12 h-13 sm:h-16 text-center text-lg sm:text-xl font-mono font-semibold rounded-xl bg-[#161512] border border-[rgba(201,164,92,0.3)] focus:border-[#E9D5A0] focus:ring-2 focus:ring-[#C9A45C]/40 text-[#F5F0E7] outline-none transition-all shadow-inner"
                           />
                         ))}
                       </div>

@@ -133,13 +133,21 @@ export function Header() {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-2 lg:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3">
               <Link
                 href="/search"
                 className="p-2 text-[#A8A197] hover:text-[#E9D5A0] hover:bg-[#C9A45C]/10 rounded-full transition-all"
                 aria-label="Search"
               >
                 <Search size={19} strokeWidth={1.5} />
+              </Link>
+
+              <Link
+                href="/wishlist"
+                className="p-2 text-[#A8A197] hover:text-[#E9D5A0] hover:bg-[#C9A45C]/10 rounded-full transition-all"
+                aria-label="Wishlist"
+              >
+                <Heart size={19} strokeWidth={1.5} />
               </Link>
 
               <Link
@@ -161,22 +169,14 @@ export function Header() {
                 )}
               </Link>
 
-              <Link
-                href="/wishlist"
-                className="hidden sm:block p-2 text-[#A8A197] hover:text-[#E9D5A0] hover:bg-[#C9A45C]/10 rounded-full transition-all"
-                aria-label="Wishlist"
-              >
-                <Heart size={19} strokeWidth={1.5} />
-              </Link>
-
               <button
                 onClick={() => toggleCart(true)}
-                className="relative p-2 text-[#A8A197] hover:text-[#E9D5A0] hover:bg-[#C9A45C]/10 rounded-full transition-all"
+                className="relative p-2 text-[#A8A197] hover:text-[#E9D5A0] hover:bg-[#C9A45C]/10 rounded-full transition-all cursor-pointer"
                 aria-label={`Shopping bag (${itemCount} items)`}
               >
                 <ShoppingBag size={19} strokeWidth={1.5} />
                 {itemCount > 0 && (
-                  <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-[#C9A45C] text-[#080807] text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-[#C9A45C] text-[#080807] text-[10px] font-bold rounded-full flex items-center justify-center">
                     {itemCount}
                   </span>
                 )}
@@ -184,7 +184,7 @@ export function Header() {
 
               {/* Mobile menu toggle */}
               <button
-                className="lg:hidden p-2 text-[#A8A197] hover:text-[#F5F0E7] transition-colors"
+                className="lg:hidden p-2 text-[#A8A197] hover:text-[#F5F0E7] transition-colors cursor-pointer ml-0.5"
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
                 aria-expanded={isMobileOpen}
                 aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
@@ -203,14 +203,14 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-50 lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
           >
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+              className="fixed inset-0 bg-black/85 backdrop-blur-md"
               onClick={() => setIsMobileOpen(false)}
             />
 
@@ -219,63 +219,106 @@ export function Header() {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 26, stiffness: 240 }}
-              className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#0E0D0B] border-l border-[rgba(201,164,92,0.2)] p-6 flex flex-col justify-between shadow-2xl"
+              transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+              className="fixed inset-y-0 right-0 w-[88vw] max-w-sm bg-[#0E0D0B] border-l border-[rgba(201,164,92,0.2)] p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
               onKeyDown={handleKeyDown}
             >
               <div>
-                <div className="flex items-center justify-between pb-6 border-b border-[rgba(201,164,92,0.15)] mb-8">
-                  <span
-                    className="text-lg tracking-[0.15em] text-gold-gradient"
-                    style={{ fontFamily: 'var(--font-serif)' }}
-                  >
-                    DAMODAR
-                  </span>
+                <div className="flex items-center justify-between pb-5 border-b border-[rgba(201,164,92,0.15)] mb-6">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="text-lg tracking-[0.16em] text-gold-gradient"
+                      style={{ fontFamily: 'var(--font-serif)' }}
+                    >
+                      DAMODAR
+                    </span>
+                    <span className="text-[10px] uppercase tracking-widest text-[#A8A197]/60 border-l border-[rgba(201,164,92,0.3)] pl-2">
+                      Jewellers
+                    </span>
+                  </div>
                   <button
                     onClick={() => setIsMobileOpen(false)}
-                    className="p-1 text-[#A8A197] hover:text-[#F5F0E7]"
+                    className="p-1.5 text-[#A8A197] hover:text-[#F5F0E7] rounded-full hover:bg-white/5 transition-colors"
+                    aria-label="Close menu"
                   >
                     <X size={20} />
                   </button>
                 </div>
 
-                <nav className="flex flex-col gap-4">
+                <nav className="flex flex-col gap-1">
                   {NAV_LINKS.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
+                      onClick={() => setIsMobileOpen(false)}
                       className={cn(
-                        'text-base uppercase tracking-widest py-2 border-b border-[rgba(201,164,92,0.08)] transition-colors',
-                        pathname === item.href ? 'text-[#E9D5A0]' : 'text-[#A8A197] hover:text-[#F5F0E7]',
+                        'text-sm uppercase tracking-widest py-3 px-2 rounded-lg border-b border-[rgba(201,164,92,0.06)] transition-all flex items-center justify-between',
+                        pathname === item.href
+                          ? 'text-[#E9D5A0] bg-[rgba(201,164,92,0.08)] font-medium pl-3'
+                          : 'text-[#A8A197] hover:text-[#F5F0E7] hover:pl-3',
                       )}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      <span className="text-xs text-[#C9A45C]/50">→</span>
                     </Link>
                   ))}
                 </nav>
+
+                {/* Quick Boutique Assistance link */}
+                <div className="mt-8 p-4 rounded-xl bg-[#141310] border border-[rgba(201,164,92,0.15)]">
+                  <span className="text-[10px] uppercase tracking-wider text-[#C9A45C] block mb-1 font-mono">
+                    Private Concierge
+                  </span>
+                  <p className="text-xs text-[#A8A197] mb-2 font-light">
+                    Mon–Sat: 10:30 AM – 7:30 PM IST
+                  </p>
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsMobileOpen(false)}
+                    className="text-xs text-[#E9D5A0] hover:underline flex items-center gap-1"
+                  >
+                    <span>Book Boutique Appointment</span>
+                    <span>→</span>
+                  </Link>
+                </div>
               </div>
 
-              <div className="pt-6 border-t border-[rgba(201,164,92,0.15)] grid grid-cols-3 gap-2 text-center">
+              {/* 4-Item Mobile Quick Navigation */}
+              <div className="pt-5 mt-6 border-t border-[rgba(201,164,92,0.15)] grid grid-cols-4 gap-1 text-center">
                 <Link
                   href="/search"
-                  className="flex flex-col items-center gap-1.5 text-[11px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors py-1"
                 >
-                  <Search size={16} /> Search
+                  <Search size={16} />
+                  <span>Search</span>
                 </Link>
+
+                <Link
+                  href="/wishlist"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors py-1"
+                >
+                  <Heart size={16} />
+                  <span>Vault</span>
+                </Link>
+
                 <button
                   type="button"
                   onClick={() => {
                     setIsMobileOpen(false);
                     toggleCart(true);
                   }}
-                  className="flex flex-col items-center gap-1.5 text-[11px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors cursor-pointer"
+                  className="flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors cursor-pointer py-1"
                 >
-                  <ShoppingBag size={16} /> Bag ({itemCount})
+                  <ShoppingBag size={16} />
+                  <span>Bag ({itemCount})</span>
                 </button>
+
                 <Link
                   href={isAuthenticated ? '/account' : '/auth'}
                   onClick={() => setIsMobileOpen(false)}
-                  className="flex flex-col items-center gap-1.5 text-[11px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors"
+                  className="flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-[#A8A197] hover:text-[#E9D5A0] transition-colors py-1"
                 >
                   <User size={16} className={isAuthenticated ? 'text-[#C9A45C]' : ''} />
                   <span>{isAuthenticated ? 'Portal' : 'Sign In'}</span>

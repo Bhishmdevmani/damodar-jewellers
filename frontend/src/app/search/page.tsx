@@ -40,14 +40,14 @@ export default function SearchPage() {
   }, [query, filters]);
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
       {/* Header */}
-      <div className="max-w-2xl mb-12">
-        <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-3">
+      <div className="max-w-2xl mb-8 sm:mb-12">
+        <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-2 sm:mb-3">
           Catalogue Search
         </span>
         <h1
-          className="text-display-md font-light text-[#F5F0E7] mb-6 leading-tight"
+          className="text-2xl sm:text-display-md font-light text-[#F5F0E7] mb-4 sm:mb-6 leading-tight"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           Discover Rare Creations
@@ -60,9 +60,9 @@ export default function SearchPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by jewellery piece, gemstone, or collection..."
-            className="w-full bg-[#11100E] border border-[rgba(201,164,92,0.3)] focus:border-[#C9A45C] text-[#F5F0E7] text-sm py-4 pl-12 pr-10 focus:outline-none placeholder:text-[#A8A197]/50"
+            className="w-full bg-[#11100E] border border-[rgba(201,164,92,0.3)] focus:border-[#C9A45C] text-[#F5F0E7] text-xs sm:text-sm py-3.5 sm:py-4 pl-11 sm:pl-12 pr-10 focus:outline-none placeholder:text-[#A8A197]/50"
           />
-          <SearchIcon className="w-5 h-5 text-[#C9A45C] absolute left-4 top-1/2 -translate-y-1/2" />
+          <SearchIcon className="w-4 sm:w-5 h-4 sm:h-5 text-[#C9A45C] absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2" />
           {query && (
             <button
               onClick={() => setQuery('')}

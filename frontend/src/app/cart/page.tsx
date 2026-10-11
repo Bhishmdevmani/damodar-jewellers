@@ -49,14 +49,14 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#080807] pt-28 pb-24 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
-      <div className="flex items-center justify-between mb-10 pb-6 border-b border-[rgba(201,164,92,0.15)]">
+    <div className="min-h-screen bg-[#080807] pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+      <div className="flex items-center justify-between mb-8 sm:mb-10 pb-4 sm:pb-6 border-b border-[rgba(201,164,92,0.15)]">
         <div>
-          <span className="text-xs uppercase tracking-[0.2em] text-[#C9A45C] block mb-2">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#C9A45C] block mb-1.5 sm:mb-2">
             Order Review
           </span>
           <h1
-            className="text-display-sm sm:text-display-md font-light text-[#F5F0E7]"
+            className="text-2xl sm:text-display-sm lg:text-display-md font-light text-[#F5F0E7]"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             Shopping Bag ({items.reduce((acc, i) => acc + i.quantity, 0)})
@@ -64,37 +64,48 @@ export default function CartPage() {
         </div>
         <button
           onClick={clearCart}
-          className="text-xs uppercase tracking-widest text-[#A8A197] hover:text-red-400 transition-colors"
+          className="text-xs uppercase tracking-widest text-[#A8A197] hover:text-red-400 transition-colors p-2"
         >
           Clear Bag
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
         {/* Cart Items List (8 cols) */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-4 sm:space-y-6">
           {items.map((item) => (
             <div
               key={`${item.product.id}-${JSON.stringify(item.selectedAttributes)}`}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 bg-[#11100E] border border-[rgba(201,164,92,0.15)] gap-6"
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 bg-[#11100E] border border-[rgba(201,164,92,0.15)] gap-4 sm:gap-6"
             >
-              <div className="flex items-center gap-5">
-                <div className="w-20 h-20 bg-[#191713] border border-[rgba(201,164,92,0.15)] flex items-center justify-center shrink-0">
-                  <span className="text-2xl text-[#C9A45C]">✦</span>
+              <div className="flex items-center gap-3.5 sm:gap-5 w-full sm:w-auto">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#191713] border border-[rgba(201,164,92,0.15)] flex items-center justify-center shrink-0 overflow-hidden p-1">
+                  {item.product.images?.[0]?.url ? (
+                    <img
+                      src={
+                        item.product.images.find((img) => img.isPrimary)?.url ||
+                        item.product.images[0].url
+                      }
+                      alt={item.product.name}
+                      className="w-full h-full object-contain filter drop-shadow-sm"
+                    />
+                  ) : (
+                    <span className="text-xl sm:text-2xl text-[#C9A45C]">✦</span>
+                  )}
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <Link
                     href={`/products/${item.product.slug}`}
-                    className="text-base text-[#F5F0E7] hover:text-[#C9A45C] font-light transition-colors"
+                    className="text-sm sm:text-base text-[#F5F0E7] hover:text-[#C9A45C] font-light transition-colors line-clamp-1"
                     style={{ fontFamily: 'var(--font-serif)' }}
                   >
                     {item.product.name}
                   </Link>
-                  <span className="block text-xs text-[#A8A197] mt-1">
+                  <span className="block text-xs text-[#A8A197] mt-0.5 truncate">
                     {item.product.material}
                   </span>
                   {item.selectedAttributes?.Finish && (
-                    <span className="inline-block text-[11px] uppercase tracking-wider text-[#C9A45C] mt-1">
+                    <span className="inline-block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#C9A45C] mt-0.5">
                       Finish: {item.selectedAttributes.Finish}
                     </span>
                   )}
@@ -102,12 +113,13 @@ export default function CartPage() {
               </div>
 
               {/* Quantity & Price Controls */}
-              <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
+              <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-6 w-full sm:w-auto pt-3 sm:pt-0 border-t border-white/5 sm:border-t-0">
                 {/* Quantity adjust */}
                 <div className="flex items-center border border-[rgba(201,164,92,0.25)] bg-[#191713]">
                   <button
                     onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                    className="w-8 h-8 text-xs text-[#F5F0E7] hover:text-[#C9A45C]"
+                    className="w-8 h-8 text-xs text-[#F5F0E7] hover:text-[#C9A45C] active:scale-95"
+                    aria-label="Decrease quantity"
                   >
                     -
                   </button>
@@ -116,13 +128,14 @@ export default function CartPage() {
                   </span>
                   <button
                     onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                    className="w-8 h-8 text-xs text-[#F5F0E7] hover:text-[#C9A45C]"
+                    className="w-8 h-8 text-xs text-[#F5F0E7] hover:text-[#C9A45C] active:scale-95"
+                    aria-label="Increase quantity"
                   >
                     +
                   </button>
                 </div>
 
-                <div className="text-right min-w-[100px]">
+                <div className="text-right min-w-[90px] sm:min-w-[100px]">
                   <PriceDisplay
                     price={item.product.price * item.quantity}
                     currency={item.product.currency}
@@ -133,7 +146,7 @@ export default function CartPage() {
                 <button
                   onClick={() => removeItem(item.product.id)}
                   aria-label="Remove item"
-                  className="text-[#A8A197] hover:text-red-400 transition-colors p-1"
+                  className="text-[#A8A197] hover:text-red-400 transition-colors p-1.5"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
@@ -144,7 +157,7 @@ export default function CartPage() {
 
         {/* Order Summary & Checkout (4 cols) */}
         <div className="lg:col-span-4">
-          <div className="p-8 bg-[#11100E] border border-[rgba(201,164,92,0.22)] sticky top-28">
+          <div className="p-5 sm:p-8 bg-[#11100E] border border-[rgba(201,164,92,0.22)] lg:sticky lg:top-28">
             <h2
               className="text-xl font-light text-[#F5F0E7] mb-6 pb-4 border-b border-[rgba(201,164,92,0.12)]"
               style={{ fontFamily: 'var(--font-serif)' }}

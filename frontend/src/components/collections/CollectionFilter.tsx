@@ -46,14 +46,14 @@ export function CollectionFilter({
     <div className="bg-[#11100E] border border-[rgba(201,164,92,0.14)] p-4 sm:p-6 mb-8">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         {/* Left: Material Pills */}
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs uppercase tracking-wider text-[#A8A197] flex items-center gap-1.5 mr-2">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1 sm:pb-0 sm:flex-wrap w-full lg:w-auto -mx-1 px-1">
+          <span className="text-xs uppercase tracking-wider text-[#A8A197] flex items-center gap-1.5 mr-1 shrink-0">
             <SlidersHorizontal className="w-3.5 h-3.5 text-[#C9A45C]" />
             Material:
           </span>
           <button
             onClick={() => onFilterChange({ ...filters, material: undefined })}
-            className={`text-xs px-3 py-1.5 border transition-all ${
+            className={`text-xs px-3 py-1.5 border transition-all shrink-0 ${
               !filters.material
                 ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#F5F0E7]'
                 : 'border-white/10 text-[#A8A197] hover:border-white/20'
@@ -65,7 +65,7 @@ export function CollectionFilter({
             <button
               key={mat}
               onClick={() => handleMaterialToggle(mat)}
-              className={`text-xs px-3 py-1.5 border transition-all ${
+              className={`text-xs px-3 py-1.5 border transition-all shrink-0 ${
                 filters.material === mat
                   ? 'border-[#C9A45C] bg-[#C9A45C]/15 text-[#F5F0E7]'
                   : 'border-white/10 text-[#A8A197] hover:border-white/20'
@@ -77,34 +77,36 @@ export function CollectionFilter({
         </div>
 
         {/* Right: Sort and Count */}
-        <div className="flex items-center gap-4 self-end lg:self-auto">
+        <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 w-full lg:w-auto pt-2 lg:pt-0 border-t border-white/5 lg:border-t-0">
           {totalCount !== undefined && (
-            <span className="text-xs text-[#A8A197]">
+            <span className="text-xs text-[#A8A197] shrink-0">
               {totalCount} {totalCount === 1 ? 'Design' : 'Designs'}
             </span>
           )}
 
-          <select
-            value={filters.sort || ''}
-            onChange={(e) => handleSortChange((e.target.value as ProductSearchParams['sort']) || undefined)}
-            className="bg-[#191713] text-xs text-[#F5F0E7] border border-[rgba(201,164,92,0.2)] px-3 py-2 rounded-none focus:outline-none focus:border-[#C9A45C]"
-          >
-            <option value="">Sort by: Featured</option>
-            <option value="price_asc">Price: Low to High</option>
-            <option value="price_desc">Price: High to Low</option>
-            <option value="name_asc">Name: A to Z</option>
-            <option value="newest">New Arrivals</option>
-          </select>
-
-          {hasActiveFilters && (
-            <button
-              onClick={clearFilters}
-              className="text-xs text-[#C9A45C] hover:text-[#E9D5A0] flex items-center gap-1 transition-colors"
+          <div className="flex items-center gap-2">
+            <select
+              value={filters.sort || ''}
+              onChange={(e) => handleSortChange((e.target.value as ProductSearchParams['sort']) || undefined)}
+              className="bg-[#191713] text-xs text-[#F5F0E7] border border-[rgba(201,164,92,0.2)] px-3 py-2 rounded-none focus:outline-none focus:border-[#C9A45C]"
             >
-              <X className="w-3.5 h-3.5" />
-              Reset
-            </button>
-          )}
+              <option value="">Sort: Featured</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="name_asc">Name: A to Z</option>
+              <option value="newest">New Arrivals</option>
+            </select>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="text-xs text-[#C9A45C] hover:text-[#E9D5A0] flex items-center gap-1 transition-colors px-2 py-1.5"
+              >
+                <X className="w-3.5 h-3.5" />
+                Reset
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

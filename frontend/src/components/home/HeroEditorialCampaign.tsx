@@ -21,24 +21,24 @@ export function HeroEditorialCampaign() {
             loading="eager"
           />
 
-          {/* Delicate Directional Shadow: Keeps typography readable on the left without obscuring the model */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080807] via-[#080807]/60 to-transparent w-full lg:w-[50%] pointer-events-none" />
+          {/* Directional Shadow: Keeps typography ultra-readable across phones, tablets, and large screens */}
+          <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-[#080807] via-[#080807]/80 to-[#080807]/35 sm:to-transparent w-full lg:w-[55%] pointer-events-none" />
           <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#080807] via-[#080807]/60 to-transparent pointer-events-none" />
           <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#080807]/80 to-transparent pointer-events-none" />
         </div>
 
         {/* Hero Editorial Narrative */}
-        <div className="relative z-20 max-w-[1440px] w-full mx-auto px-6 sm:px-12 lg:px-20 pt-32 lg:pt-28 pb-16">
+        <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-12 lg:px-20 pt-28 sm:pt-32 lg:pt-28 pb-12 sm:pb-16">
           <div className="max-w-xl lg:max-w-2xl">
             {/* Overtitle */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-3 mb-6"
+              className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6"
             >
-              <span className="w-8 h-[1px] bg-[#C9A45C]" />
-              <span className="text-xs tracking-wider text-[#E9D5A0] font-light">
+              <span className="w-6 sm:w-8 h-[1px] bg-[#C9A45C]" />
+              <span className="text-[11px] sm:text-xs tracking-wider text-[#E9D5A0] font-light">
                 Haute Joaillerie · Damodar Atelier
               </span>
             </motion.div>
@@ -48,7 +48,7 @@ export function HeroEditorialCampaign() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-display-md sm:text-display-lg font-light text-[#F5F0E7] tracking-tight leading-[1.04] mb-6"
+              className="text-3xl sm:text-display-md lg:text-display-lg font-light text-[#F5F0E7] tracking-tight leading-[1.05] sm:leading-[1.04] mb-4 sm:mb-6"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
               Jewellery That Becomes <br />
@@ -60,7 +60,7 @@ export function HeroEditorialCampaign() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base sm:text-lg text-[#D1CCC4] font-light leading-relaxed mb-10 max-w-xl"
+              className="text-sm sm:text-lg text-[#D1CCC4] font-light leading-relaxed mb-8 sm:mb-10 max-w-xl"
             >
               Handcrafted in solid 22K gold with a magnificent natural Ceylon sapphire centerpiece and diamond pavé halos. An extraordinary union of sovereign Indian heritage and modern haute joaillerie.
             </motion.p>
@@ -70,18 +70,18 @@ export function HeroEditorialCampaign() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-6 mb-12"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-12"
             >
               <Link
                 href="/products"
-                className="btn-primary py-3.5 px-8 text-xs tracking-wider rounded-full flex items-center gap-2.5 transition-all"
+                className="btn-primary py-3.5 px-8 text-xs tracking-wider rounded-full flex items-center justify-center gap-2.5 transition-all text-center"
               >
                 <span>Explore All Creations</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
                 href="/collections"
-                className="text-xs tracking-wider text-[#E9D5A0] hover:text-[#F5F0E7] transition-colors border-b border-[#C9A45C]/50 pb-1"
+                className="text-xs tracking-wider text-[#E9D5A0] hover:text-[#F5F0E7] transition-colors border-b border-[#C9A45C]/50 pb-1 text-center self-center sm:self-auto"
               >
                 View Curated Collections
               </Link>
@@ -92,7 +92,7 @@ export function HeroEditorialCampaign() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs tracking-wide text-[#A8A197] font-light"
+              className="flex flex-wrap items-center gap-y-2 gap-x-3 sm:gap-x-6 text-[11px] sm:text-xs tracking-wide text-[#A8A197] font-light"
             >
               <span>22K BIS 916 Hallmarked</span>
               <span className="text-[#C9A45C]">•</span>
@@ -108,8 +108,8 @@ export function HeroEditorialCampaign() {
       {/* 2. THE SAVOIR-FAIRE — EDITORIAL SPREAD */}
       {/* Refined 4:3 Aspect Ratio: Displays the Entire Necklace, Pendant, and Earring with Zero Cutoffs */}
       {/* ───────────────────────────────────────────────────────────────────────── */}
-      <section className="relative py-28 px-6 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section className="relative py-16 sm:py-28 px-4 sm:px-12 lg:px-20 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Left: Editorial Narrative & Craft Pillars (6 cols) */}
           <div className="lg:col-span-6">
             <span className="text-xs uppercase tracking-[0.25em] text-[#C9A45C] block mb-4 font-light">
